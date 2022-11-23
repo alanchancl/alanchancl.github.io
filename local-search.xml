@@ -17,6 +17,60 @@
   
   
   <entry>
+    <title>2020 ICLR | 提出了一种利用图像转换，提高对抗训练对局部鲁棒特征的学习的方法</title>
+    <link href="/2021/09/11/%E6%8F%90%E5%87%BA%E4%BA%86%E4%B8%80%E7%A7%8D%E5%88%A9%E7%94%A8%E5%9B%BE%E5%83%8F%E8%BD%AC%E6%8D%A2%EF%BC%8C%E6%8F%90%E9%AB%98%E5%AF%B9%E6%8A%97%E8%AE%AD%E7%BB%83%E5%AF%B9%E5%B1%80%E9%83%A8%E9%B2%81%E6%A3%92%E7%89%B9%E5%BE%81%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <url>/2021/09/11/%E6%8F%90%E5%87%BA%E4%BA%86%E4%B8%80%E7%A7%8D%E5%88%A9%E7%94%A8%E5%9B%BE%E5%83%8F%E8%BD%AC%E6%8D%A2%EF%BC%8C%E6%8F%90%E9%AB%98%E5%AF%B9%E6%8A%97%E8%AE%AD%E7%BB%83%E5%AF%B9%E5%B1%80%E9%83%A8%E9%B2%81%E6%A3%92%E7%89%B9%E5%BE%81%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h1id="iclr-提出了一种利用图像转换提高对抗训练对局部鲁棒特征的学习的方法">2020ICLR |提出了一种利用图像转换，提高对抗训练对局部鲁棒特征的学习的方法</h1><p>论文名称：《Robust Local Features For Improving The Generalization OfAdversarial Training》</p><p>作者单位：Chuanbiao Song / Huazhong University of Science andTechnology</p><p>收录时间：2020 ICLR</p><p>文章亮点：提出了一种利用图像转换方法，提高对抗训练对局部鲁棒特征的学习，提高对抗训练的模型鲁棒性和可迁移性。</p><span id="more"></span><h2 id="motivation">Motivation</h2><ul><li><p>经过对抗训练的模型，在正对训练数据和测试数据之间的鲁棒性差距大。对抗训练的鲁棒性很难泛化到一些模型尚未见过的数据。</p></li><li><p>(Geirhos et al., 2019; Zhang &amp; Zhu,2019)发现：对抗训练是训练模型捕获全局特征的能力，但是正常的训练更偏向于训练模型捕获局部特征的能力。全局结构特征对于对抗扰动具有较强的鲁棒性，但是对于没有见过样本很难泛化。局部特征对于不可见的样本泛化能力好，但是对与对抗性样本泛化能力差。</p></li><li><p>因此能否让对抗训练更好的学习鲁棒的局部特征，使模型有更好的对抗鲁棒泛化能力和更好的标准化泛化能力？</p></li><li><p>文章贡献：1) 第一个揭示了对抗训练和局部鲁棒特征关系的研究2）提出了Robust Local Features for Adversarial Training(RLFAT)以学习局部鲁棒特征</p></li></ul><h2 id="rlfat">RLFAT：</h2><ul><li><p>提出了Random Block Shuffle(RBS)：一种简单明了的图像转换方法，将目标图像随机地分成k块，并随机地对这些块进行分离混合操作。该方法在某种程度上破坏了图像的全局结构特征并保留了图像的局部特征。</p><p><imgsrc="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231736296.png" /></p></li><li><p>将RBS方法应用到对抗训练中去，且只针对对抗样本在训练阶段的使用，测试阶段不会使用。</p></li></ul><h2 id="experiments">Experiments</h2><ul><li><p>Baselines：PGD Adversarial Training (PGDAT) and TRADES</p></li><li><p>Adversarial setting：white-box attacks: PGD and CW；black-boxattack setting：N-attack</p></li><li><p>Datasets：CIFAR-10、CIFAR-100和STL-10</p></li><li><p>Neural networks：ResNet 40-2、ResNet w32-10</p></li><li><p>实验结果：</p><p><imgsrc="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231736824.bmp" /></p><ul><li>局部鲁棒特征可以显著改善现有的对抗训练框架上的对抗鲁棒性泛化能力。</li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>论文笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>adversarial defense</tag>
+      
+      <tag>AI Security</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2020 ICLR | 在基于图像转换的防御方法基础上引入了softmax分布分类器</title>
+    <link href="/2021/09/09/%E5%9C%A8%E5%9F%BA%E4%BA%8E%E5%9B%BE%E5%83%8F%E8%BD%AC%E6%8D%A2%E7%9A%84%E9%98%B2%E5%BE%A1%E6%96%B9%E6%B3%95%E5%9F%BA%E7%A1%80%E4%B8%8A%E5%BC%95%E5%85%A5%E4%BA%86softmax%E5%88%86%E5%B8%83%E5%88%86%E7%B1%BB%E5%99%A8/"/>
+    <url>/2021/09/09/%E5%9C%A8%E5%9F%BA%E4%BA%8E%E5%9B%BE%E5%83%8F%E8%BD%AC%E6%8D%A2%E7%9A%84%E9%98%B2%E5%BE%A1%E6%96%B9%E6%B3%95%E5%9F%BA%E7%A1%80%E4%B8%8A%E5%BC%95%E5%85%A5%E4%BA%86softmax%E5%88%86%E5%B8%83%E5%88%86%E7%B1%BB%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="iclr-在基于图像转换的防御方法基础上引入了softmax分布分类器">2020ICLR | 在基于图像转换的防御方法基础上引入了softmax分布分类器</h1><p>论文名称：<ahref="http://link.zhihu.com/?target=https%3A//arxiv.org/abs/1906.00258%3Fcontext%3Dcs.CV">《EnhancingTransformation-Based Defenses Against Adversarial Attacks With ADistribution Classifier》</a></p><p>作者单位：Connie Kou/ National University of Singapore</p><p>收录时间：2020 ICLR</p><p>文章亮点： 在之前Transformation-BasedDefenses的基础上引入了softmax分布分类器，提高了干净和对抗样本的分类准确率。</p><span id="more"></span><h2 id="motivation">Motivation</h2><ul><li><p>目前对抗样本的防御方法中，已经提出了随机输入变换方法。其思想是通过随机变换将图像从对抗攻击中恢复出来，并以多数表决作为随机样本之间的共识。</p></li><li><p>但是上述的随机输入变换方法在提高对抗样本的准确率的同时，牺牲了对干净样本的正确率。</p></li><li><p>本文研究了随机变换所导致的softmax分布，发现在干净样本上进行随机变化，softmax分布虽然会移动到错误的类别，但是却可以用softmax分布来修正预测。且对抗样本经过图像转化，其softmax分布与干净图像的分布形状类似</p></li><li><p>基于上述描述，本文提出了一种方法以提升现存的基于转换的防御：单独训练一个轻量级分布分类器来识别变换图像的softmax输出分布的不同特征。</p></li><li><p>实验证明，仅通过干净样本得到的分布进行分布分类器训练的防御效果，优于对干净样本和对抗样本的多数投票方法。</p></li><li><p>这种方法与攻击方法无关，不需要对CNN进行再训练，可以与现有的转换方法进行集成。</p><p><imgsrc="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231732657.png" /></p></li></ul><h2 id="related-work">Related Work</h2><ul><li>随机输入变化的防御方法：通过对输入图像的随机转换（缩小、旋转等操作），起到消解扰动，达到让模型正确分类的效果。</li><li>Pixel deflection (PD) (Prakash et al.,2018)：随机打乱图像中的像素起到防御作用。</li><li>Random resize and padding (RRP) (Xie et al., 2017):随机调整大小，然后以随机方式用零填充到固定大小。</li><li>transformation-basedmethods优点在于我们不需要对CNN分类模型再进行训练，但是存在一个问题：虽然对抗样本的分类正确率提升了，但是干净样本的分类正确率却下降了。</li><li>因此本文通过研究随机图像变换对softmax输出的分布影响，说明了变换后干净样本分类正确率的原因。</li></ul><h2id="随机图像变换的softmax分布分析">随机图像变换的softmax分布分析</h2><ul><li><p>利用MNIST数据集，观察干净样本和对抗样本在进行随机转换后的softmax分布。经过随机转换之后，我们发现一些干净图像会被错误地分类到求他类别（如label8中的2、3），但是这些错误分类却与对抗样本随即转换后的投票类别相同。说明经过随机转换之后，干净样本和对抗样本具有相似的softmax分布。</p><p><imgsrc="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231732135.png" /></p></li><li><p>利用JS divergence来定义softmax分布的距离。</p></li><li><p>并在不同转化强度(不同d值)的情况下，分别对clean-clean(sameclass)、adversarial-adversarial(same class)、clean-adversarial(sameclass)和clean-clean(differentclass)四种情况下进行softmax分布距离的计算。且值得注意的是，在d=300时，clean-clean(differentclass)蓝线减少的较快，且高于clean-clean(same class)红线，这说明了转换依旧保留了不同类之间的差别。在d=800时，四条线都收敛了，这表明转化过大，不同类别之间的差异已经被不再保留。</p><p><imgsrc="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231732693.jpg" /></p></li></ul><h2 id="approach">Approach</h2><p>利用softmax分类器改进防御方法：</p><ul><li>训练阶段：只对干净的样本转换后得到的softmax分布与其对应的正确标签作为分布分类器的训练样本，训练模型可以根据softmax分布将干净样本正确分类。</li><li>测试阶段：对干净样本和对抗样本均作测试，以获得最终的类别预测。</li></ul><h2 id="experiments">Experiments</h2><p>利用softmax分类器改进防御方法：</p><ul><li>数据集：MNIST、CIFAR10、CIFAR100</li><li>攻击方法：FGSM、IGSM、DeepFool、C&amp;W</li><li>Transformation-based defenses：PD、RRP</li><li>说明：因为实验旨在测试算法的有效性，因此只考虑CNN正确预测的图像。所以没有任何防御的CNN，分类干净样本时，正确率为100%，分类对抗样本时，正确率为0%。</li><li>结果：分类效果均较之前转换的防御方法有所提升。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>论文笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>adversarial defense</tag>
+      
+      <tag>AI Security</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>2020 ICLR | 不需要对抗样本实例进行对抗训练就可以提高模型鲁棒性的新方法（JARN）</title>
     <link href="/2021/09/07/%E4%B8%8D%E9%9C%80%E8%A6%81%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E5%AE%9E%E4%BE%8B%E8%BF%9B%E8%A1%8C%E5%AF%B9%E6%8A%97%E8%AE%AD%E7%BB%83%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%8F%90%E9%AB%98%E6%A8%A1%E5%9E%8B%E9%B2%81%E6%A3%92%E6%80%A7%E7%9A%84%E6%96%B0%E6%96%B9%E6%B3%95%EF%BC%88JARN%EF%BC%89/"/>
     <url>/2021/09/07/%E4%B8%8D%E9%9C%80%E8%A6%81%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E5%AE%9E%E4%BE%8B%E8%BF%9B%E8%A1%8C%E5%AF%B9%E6%8A%97%E8%AE%AD%E7%BB%83%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%8F%90%E9%AB%98%E6%A8%A1%E5%9E%8B%E9%B2%81%E6%A3%92%E6%80%A7%E7%9A%84%E6%96%B0%E6%96%B9%E6%B3%95%EF%BC%88JARN%EF%BC%89/</url>
@@ -33,7 +87,7 @@
     
     <tags>
       
-      <tag>adversarial attack</tag>
+      <tag>adversarial defense</tag>
       
       <tag>AI Security</tag>
       
