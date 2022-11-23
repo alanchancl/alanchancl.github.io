@@ -24,7 +24,7 @@
 <meta property="og:description" content="2020 ICLR | 不需要对抗样本实例进行对抗训练就可以提高模型鲁棒性的新方法（JARN） 论文名称：《Jacobian Adversarially Regularized Networks For Robustness》 作者单位：Alvin Chan&#x2F; Nanyang Technological University 收录时间：2020 ICLR 文章亮点：提出了雅可比对抗正">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-07T06:20:17.000Z">
-<meta property="article:modified_time" content="2022-11-23T09:03:21.616Z">
+<meta property="article:modified_time" content="2022-11-23T09:12:11.186Z">
 <meta property="article:author" content="Alan Chan">
 <meta property="article:tag" content="adversarial attack">
 <meta property="article:tag" content="AI Security">
@@ -313,12 +313,8 @@ Adversarially Regularized Networks（JARN）</h2>
 <li>计算对抗损失</li>
 <li>更新以最小化分类器和鉴别器的损失</li>
 </ol>
-<figure>
-<img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231658691.png" srcset="/img/loading.gif" lazyload
-alt="微信图片_20221123165739" />
-<figcaption aria-hidden="true">微信图片_20221123165739</figcaption>
-</figure>
+<p><img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231658691.png" srcset="/img/loading.gif" lazyload /></p>
 <h2 id="experiments">Experiments</h2>
 <p>数据集：MNIST, SVHN and CIFAR-10</p>
 <p>攻击方法：FGSM、PGD5、PGD40</p>
@@ -343,21 +339,13 @@ alt="CIFAR10" />
 </figure>
 <p>观察Loss
 Landscape：沿着对抗性扰动的方向和随机正交方向计算计算分类损失值。由图中我们可以看出，Standard和FGSM-AT都具有锯齿状和非线性的损耗曲面。这就解释了为什么利用FGSM对FGASM-AT训练后的模型进行多次迭代攻击失败的原因：模糊梯度。观察图三中的c、d、e三幅图，我们可以知道：JARN-AT1的对抗鲁棒性并不是由于模糊梯度造成的。</p>
-<figure>
-<img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231702151.png" srcset="/img/loading.gif" lazyload
-alt="微信图片_20221123170212" />
-<figcaption aria-hidden="true">微信图片_20221123170212</figcaption>
-</figure>
+<p><img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231702151.png" srcset="/img/loading.gif" lazyload /></p>
 <p>增加雅可比可以显著提升鲁棒性的一种可能解释：在JARN使得雅可比空间在正则化下收缩了，即雅可比空间必须类似于非噪声图像。意味着对抗样本在Loss
 Landscape中达到最优的路径会更少，因此提高了模型的鲁棒性。</p>
 <p>雅可比图像：与标准模型相比，JARN和PGD-AT的雅可比矩阵更加突出，在视觉效果上更接近原图。</p>
-<figure>
-<img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231703773.png" srcset="/img/loading.gif" lazyload
-alt="微信图片_20221123170215" />
-<figcaption aria-hidden="true">微信图片_20221123170215</figcaption>
-</figure>
+<p><img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231703773.png" srcset="/img/loading.gif" lazyload /></p>
 
                 
               </div>

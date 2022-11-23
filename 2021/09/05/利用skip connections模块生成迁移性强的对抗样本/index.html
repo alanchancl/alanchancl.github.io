@@ -24,7 +24,7 @@
 <meta property="og:description" content="2020 ICLR | 利用skip connections模块生成迁移性强的对抗样本 论文名称：《Skip Connections Matter: On The Transferability Of Adversarial Examples Generated With ResNets》 作者单位：Dongxian Wu&#x2F; Tsinghua University 收录时间：2020">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-05T05:20:17.000Z">
-<meta property="article:modified_time" content="2022-11-23T08:50:59.650Z">
+<meta property="article:modified_time" content="2022-11-23T09:11:53.918Z">
 <meta property="article:author" content="Alan Chan">
 <meta property="article:tag" content="adversarial attack">
 <meta property="article:tag" content="AI Security">
@@ -306,12 +306,8 @@ Connection可以很容易生成迁移性强的对抗样本。</p></li>
 <p>为了更多的利用skip
 connection的梯度信息，文章在梯度计算公式中引入了一个衰减参数γ来降低residual
 module模块的梯度。γ∈（0，1]</p>
-<figure>
-<img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231648825.png" srcset="/img/loading.gif" lazyload
-alt="微信图片_20221123164750" />
-<figcaption aria-hidden="true">微信图片_20221123164750</figcaption>
-</figure>
+<p><img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231648825.png" srcset="/img/loading.gif" lazyload /></p>
 <h3 id="skip-connection的迁移性实例研究">Skip
 connection的迁移性实例研究：</h3>
 <p>对抗样本生成方法：10-step PGD和其对应的SGM版本</p>
@@ -321,12 +317,8 @@ DenseNet(DN)-121/169/201</p>
 <p>数据集：ImageNet</p>
 <p>参数设置：PGD步长α=2、SGM衰减参数γ=0.5</p>
 <p>实验结果：对抗样本攻击的迁移性大大提高</p>
-<figure>
-<img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231648006.png" srcset="/img/loading.gif" lazyload
-alt="微信图片_20221123164753" />
-<figcaption aria-hidden="true">微信图片_20221123164753</figcaption>
-</figure>
+<p><img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231648006.png" srcset="/img/loading.gif" lazyload /></p>
 <p>且当替身模型中具有更多的Skip
 Connection时，其生成的对抗样本就更加具有可迁移性。</p>
 <h2 id="comparison-to-exising-transfer-attacks">Comparison To Exising
