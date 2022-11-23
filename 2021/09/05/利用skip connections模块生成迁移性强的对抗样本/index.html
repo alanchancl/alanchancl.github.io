@@ -16,21 +16,23 @@
   <meta name="author" content="Alan Chan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+    <meta name="description" content="2020 ICLR | 利用skip connections模块生成迁移性强的对抗样本 论文名称：《Skip Connections Matter: On The Transferability Of Adversarial Examples Generated With ResNets》 作者单位：Dongxian Wu&#x2F; Tsinghua University 收录时间：2020">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/10/12/hello-world/index.html">
+<meta property="og:title" content="2020 ICLR | 利用skip connections模块生成迁移性强的对抗样本">
+<meta property="og:url" content="http://example.com/2021/09/05/%E5%88%A9%E7%94%A8skip%20connections%E6%A8%A1%E5%9D%97%E7%94%9F%E6%88%90%E8%BF%81%E7%A7%BB%E6%80%A7%E5%BC%BA%E7%9A%84%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC/index.html">
 <meta property="og:site_name" content="AlanChan">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="2020 ICLR | 利用skip connections模块生成迁移性强的对抗样本 论文名称：《Skip Connections Matter: On The Transferability Of Adversarial Examples Generated With ResNets》 作者单位：Dongxian Wu&#x2F; Tsinghua University 收录时间：2020">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-10-12T09:39:00.567Z">
-<meta property="article:modified_time" content="2022-10-12T09:39:00.567Z">
+<meta property="article:published_time" content="2021-09-05T05:20:17.000Z">
+<meta property="article:modified_time" content="2022-11-23T08:50:59.650Z">
 <meta property="article:author" content="Alan Chan">
+<meta property="article:tag" content="adversarial attack">
+<meta property="article:tag" content="AI Security">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - AlanChan</title>
+  <title>2020 ICLR | 利用skip connections模块生成迁移性强的对抗样本 - AlanChan</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="2020 ICLR | 利用skip connections模块生成迁移性强的对抗样本"></span>
           
         </div>
 
@@ -206,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-12 17:39" pubdate>
-          October 12, 2022 pm
+        <time datetime="2021-09-05 13:20" pubdate>
+          September 5, 2021 pm
         </time>
       </span>
     
@@ -218,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          367 words
+          1.6k words
         
       </span>
     
@@ -229,7 +231,7 @@
         
         
         
-          4 mins
+          14 mins
         
       </span>
     
@@ -267,34 +269,88 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">2020 ICLR | 利用skip connections模块生成迁移性强的对抗样本</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very
-first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for
-more info. If you get any problems when using Hexo, you can find the
-answer in <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or
-you can ask me on <a
-target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h1 id="iclr-利用skip-connections模块生成迁移性强的对抗样本">2020 ICLR |
+利用skip connections模块生成迁移性强的对抗样本</h1>
+<p>论文名称：<a
+href="http://link.zhihu.com/?target=https%3A//arxiv.org/abs/2002.05990">《Skip
+Connections Matter: On The Transferability Of Adversarial Examples
+Generated With ResNets》</a></p>
+<p>作者单位：Dongxian Wu/ Tsinghua University</p>
+<p>收录时间：2020 ICLR</p>
+<p>文章亮点：发现了深度神经网络中skip
+connections模块的使用导致了迁移性强的对抗样本的产生。</p>
+<span id="more"></span>
+<h2 id="motivation">Motivation：</h2>
+<ul>
+<li>在深度神经网络中，skip connection 将residual
+module（残差模块）的输入直接与输出相连，建立从浅层到深层的捷径。有助于保留低级特征。且在添加多层时避免性能下降。</li>
+<li>白盒攻击算法，如FGSM、BIM、PGD和CW由于其迁移性差，难以应用在日常生活中更常见的黑盒模型中。因此很多研究也旨在提高基于替身模型的黑盒攻击的可迁移性，例如：(Dong
+et al., 2018)的Momentum Boosting、(Xie et al., 2019)的Diverse
+Input和(Dong et al., 2019) Translation Invariance。</li>
+<li>但是上述的无论时白盒攻击还是黑盒攻击，是目标攻击还是替身攻击。在考虑增强对抗攻击的可迁移性的思路上，都是将整个网络看成是一个整体，却忽略了网络内部的体系结构特征。（这个思路好厉害）</li>
+<li>基于实验观察利用skip
+connection跳过残差模块可以大大增加黑盒攻击的成功率。</li>
+</ul>
+<h3 id="文章的技术贡献">文章的技术贡献</h3>
+<ol type="1">
+<li><p>提出了Skip Gradient Method（SGM），利用类ResNet神经网络中的Skip
+Connection可以很容易生成迁移性强的对抗样本。</p></li>
+<li><p>实验证明了SGM可以极大地提高对抗样本的迁移性。</p></li>
+</ol>
+<h2 id="skip-gradient-methodsgm">Skip Gradient Method（SGM）：</h2>
+<p>为了更多的利用skip
+connection的梯度信息，文章在梯度计算公式中引入了一个衰减参数γ来降低residual
+module模块的梯度。γ∈（0，1]</p>
+<figure>
+<img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231648825.png" srcset="/img/loading.gif" lazyload
+alt="微信图片_20221123164750" />
+<figcaption aria-hidden="true">微信图片_20221123164750</figcaption>
+</figure>
+<h3 id="skip-connection的迁移性实例研究">Skip
+connection的迁移性实例研究：</h3>
+<p>对抗样本生成方法：10-step PGD和其对应的SGM版本</p>
+<p>实验替身模型：ResNet(RN)-18/34/50/101/152 and
+DenseNet(DN)-121/169/201</p>
+<p>攻击目标模型：Inception V3</p>
+<p>数据集：ImageNet</p>
+<p>参数设置：PGD步长α=2、SGM衰减参数γ=0.5</p>
+<p>实验结果：对抗样本攻击的迁移性大大提高</p>
+<figure>
+<img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211231648006.png" srcset="/img/loading.gif" lazyload
+alt="微信图片_20221123164753" />
+<figcaption aria-hidden="true">微信图片_20221123164753</figcaption>
+</figure>
+<p>且当替身模型中具有更多的Skip
+Connection时，其生成的对抗样本就更加具有可迁移性。</p>
+<h2 id="comparison-to-exising-transfer-attacks">Comparison To Exising
+Transfer Attacks：</h2>
+<ol type="1">
+<li>单独实验说明：</li>
+</ol>
+<ul>
+<li><p>Baselines：将SGM与FGSM、PGD、MI、DI、TI攻击算法进行对比</p></li>
+<li><p>Threat Model：采用黑盒攻击模型</p></li>
+<li><p>Target Models：</p>
+<p>攻击的目标模型有未经过对抗训练的传统模型：VGG19、ResNet-152、DenseNet-201、154
+layer Squeeze-and-Excitation network、Inception V3、Inception
+V4、Inception-ResNet V2</p>
+<p>攻击的目标还有经过对抗性训练的安全模型：IncV3ens3、IncV3ens4
+、IncResV2ens3</p></li>
+<li><p>Sourse
+Models：即替代模型所使用的模型，利用对抗样本的迁移性，用来生成可以攻击其他网络的对抗样本。用了ResNet-18、ResNet-34、ResNet-50、ResNet-101、ResNet-152
+、DenseNet-121、DenseNet-169、DenseNet-201.</p></li>
+</ul>
+<ol start="2" type="1">
+<li><p>将SGM与其他攻击方法结合，测试其迁移性。如MI+SGM、DI+SGM和MI+DI+SGM的攻击效果提升</p></li>
+<li><p>实验还探究了SGM衰减率γ对攻击迁移性能的影响</p></li>
+</ol>
 
                 
               </div>
@@ -303,6 +359,36 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" class="category-chain-item">论文笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/adversarial-attack/">#adversarial attack</a>
+      
+        <a href="/tags/AI-Security/">#AI Security</a>
+      
+    </div>
   
 </div>
 
@@ -312,8 +398,8 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2022/10/12/hello-world/</div>
+      <div>2020 ICLR | 利用skip connections模块生成迁移性强的对抗样本</div>
+      <div>http://example.com/2021/09/05/利用skip connections模块生成迁移性强的对抗样本/</div>
     </div>
     <div class="license-meta">
       
@@ -325,7 +411,7 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 12, 2022</div>
+          <div>September 5, 2021</div>
         </div>
       
       
@@ -357,12 +443,18 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2021/09/07/%E4%B8%8D%E9%9C%80%E8%A6%81%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E5%AE%9E%E4%BE%8B%E8%BF%9B%E8%A1%8C%E5%AF%B9%E6%8A%97%E8%AE%AD%E7%BB%83%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%8F%90%E9%AB%98%E6%A8%A1%E5%9E%8B%E9%B2%81%E6%A3%92%E6%80%A7%E7%9A%84%E6%96%B0%E6%96%B9%E6%B3%95%EF%BC%88JARN%EF%BC%89/" title="2020 ICLR | 不需要对抗样本实例进行对抗训练就可以提高模型鲁棒性的新方法（JARN）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2020 ICLR | 不需要对抗样本实例进行对抗训练就可以提高模型鲁棒性的新方法（JARN）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/09/07/%E4%B8%8D%E9%9C%80%E8%A6%81%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E5%AE%9E%E4%BE%8B%E8%BF%9B%E8%A1%8C%E5%AF%B9%E6%8A%97%E8%AE%AD%E7%BB%83%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%8F%90%E9%AB%98%E6%A8%A1%E5%9E%8B%E9%B2%81%E6%A3%92%E6%80%A7%E7%9A%84%E6%96%B0%E6%96%B9%E6%B3%95%EF%BC%88JARN%EF%BC%89/" title="2020 ICLR | 不需要对抗样本实例进行对抗训练就可以提高模型鲁棒性的新方法（JARN）">
-                        <span class="hidden-mobile">2020 ICLR | 不需要对抗样本实例进行对抗训练就可以提高模型鲁棒性的新方法（JARN）</span>
+                      <a href="/2021/09/03/%E6%8F%90%E5%87%BA%E4%BA%86%E6%96%B0%E7%9A%84%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0k-WTA%EF%BC%8C%E4%BB%A5%E6%9B%B4%E5%A5%BD%E7%9A%84%E9%98%B2%E5%BE%A1%E5%9F%BA%E4%BA%8E%E6%A2%AF%E5%BA%A6%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/" title="2020 ICLR | 提出了新的激活函数k-WTA，以更好的防御基于梯度的对抗攻击">
+                        <span class="hidden-mobile">2020 ICLR | 提出了新的激活函数k-WTA，以更好的防御基于梯度的对抗攻击</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -416,6 +508,12 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -609,6 +707,49 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
