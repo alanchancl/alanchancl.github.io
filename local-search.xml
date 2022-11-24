@@ -17,6 +17,33 @@
   
   
   <entry>
+    <title>2022 CVPR | 自动驾驶轨迹预测中的对抗样本</title>
+    <link href="/2022/04/27/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E8%BD%A8%E8%BF%B9%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC/"/>
+    <url>/2022/04/27/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E8%BD%A8%E8%BF%B9%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC/</url>
+    
+    <content type="html"><![CDATA[<h1 id="cvpr-自动驾驶轨迹预测中的对抗样本">2022 CVPR |自动驾驶轨迹预测中的对抗样本</h1><p>论文名称：<ahref="http://link.zhihu.com/?target=https%3A//arxiv.org/abs/2201.05057">OnAdversarial Robustness of Trajectory Prediction for AutonomousVehicles</a></p><p>作者单位：Qingzhao Zhang / 密歇根大学</p><p>收录时间：2022 CVPR</p><p>文章亮点：探究了自动驾驶轨迹预测的鲁棒性，设计了一种对抗干扰的方法，对轨迹的影响程度可以达到150%。最后探究了一些防御方法有效性。</p><span id="more"></span><h2 id="motivation">Motivation</h2><p>轨迹预测攻击的两点不同：①攻击后的预测轨迹符合物理规律。（约束速度和加速度）②攻击时目标方程的确定（将不同的度量方法的误差作为优化目标）</p><figure><imgsrc="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211240959086.png"alt="轨迹攻击示意图-欺骗换道" /><figcaption aria-hidden="true">轨迹攻击示意图-欺骗换道</figcaption></figure><p>图中AV车是被攻击的对象，其轨迹预测模型将对其他车OV的轨迹产生错误的预判，如上图中将直行预测为变道，使得AV车做出错误的决策。</p><h2 id="problem-formulation">Problem Formulation</h2><h3 id="轨迹预测符号表示">轨迹预测符号表示</h3><figure><imgsrc="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211241002629.png"alt="时间序列示意图" /><figcaption aria-hidden="true">时间序列示意图</figcaption></figure><p><spanclass="math inline">\(s_{t_1:t_2}^i=\left\{s_{t_1}^i,\ldots,s_{t_2}^i\right\}\)</span>表示物体<span class="math inline">\(i\)</span>在时间<spanclass="math inline">\(t_1\)</span> 到时间 $<spanclass="math inline">\(t_2\)</span>间的状态变化序列</p><p><span class="math inline">\(H_t=\left\{H_t^i=s_{t-L_I+1:t}^i\midi\in\left[1,N\right]\right\}\)</span> 表示历史轨迹状态（即为输入）</p><p><span class="math inline">\(F_t=\left\{F_t^i=s_{t+1:t+L_O}^i\midi\in\left[1,N\right]\right\}\)</span>表示真实未来轨迹（即为真实值）</p><p><span class="math inline">\(P_t=\left\{P_t^i=s_{t+1:t+L_O}^i\midi\in\left[1,N\right]\right\}\)</span>表示预测未来轨迹（即为预测值）</p><h3 id="误差度量方法">误差度量方法</h3><ol type="1"><li>平均位移误差（Average displacement error，ADE）</li><li>最后位移误差（Final displacement error，FDE）</li><li>平均前/后/左/右侧位移误差</li></ol><p>总共六种误差度量方法 以下误差计算方法：$D(t,n,R)=<em>{=t+1}<sup>{t+L_O}(p_</sup>n-s</em><sup>n)</sup>TR(s_{+1}<sup>n,s_</sup>n)$</p><p>其中 <span class="math inline">\(p\)</span> 和 <spanclass="math inline">\(s\)</span> 表示为预测和实际未来位置信息。 $R(·)$生成特定方向的单位向量。</p><h2 id="对抗样本生成">对抗样本生成</h2><h3 id="对抗扰动">对抗扰动</h3><figure><imgsrc="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211241006059.jpeg"alt="单帧和多帧攻击示意图" /><figcaption aria-hidden="true">单帧和多帧攻击示意图</figcaption></figure><p>对抗扰动：通过在正常轨迹上添加扰动，从而影响预测轨迹的空间坐标和计算空间位置的关键参数，例如速度单帧攻击：只根据 <span class="math inline">\(L_I\)</span>长度的历史进行攻击 多帧攻击：根据 $(L_I,L_I+1,...,L_I+L_P−1) $这总数为<span class="math inline">\(L_P\)</span> 次的多次攻击</p><h3 id="评价函数">评价函数</h3><p><spanclass="math inline">\(L\left(n,f\right)=-\frac{1}{L_P}\sum_{\alpha=L_I}^{L_I+L_P-1}f\left(P_\alpha^n,F_\alpha^n\right)\)</span></p><p>其中 <span class="math inline">\(f\)</span>表示为六种误差度量方法的计算函数。</p><h3 id="扰动约束">扰动约束</h3><p>为了使生成的扰动符合现实的物理规律，且不做出危险的驾驶行为，需要对扰动生成进行约束。</p><p>约束1：为现实的物理属性设定边界：遍历测试数据集中的所有轨迹计算速度、横/纵向加速度、横/纵向加速度的导数这三个参数的均值<span class="math inline">\(μ\)</span> 和方差 <spanclass="math inline">\(σ\)</span> 。将生成扰动的这三个参数控制在<spanclass="math inline">\(μ±3 σ\)</span> 范围内</p><p>约束2：轨迹位置的扰动边界：将最大偏差设置为1米，数据集中城市车道宽度为3.7米，汽车宽度为1.7米。将最大偏差设置为1米，汽车将不会驶向另外一条车道。</p><h3 id="目标函数">目标函数</h3><p>扰动,目标车辆的历史轨迹,扰动约束函数</p><p><span class="math inline">\(max\theta\mathrm{\ s.t.\}C\left(H^n+\theta\Delta\right)\land0\le\theta\le1\)</span></p><p>在保证<spanclass="math inline">\(0\le\theta\le1\)</span>且生成的扰动<spanclass="math inline">\(H^n+\theta\Delta\)</span>满足扰动约束函数 <spanclass="math inline">\(C\)</span> 。计算最大的<spanclass="math inline">\(θ\)</span>。</p><h2 id="防御方法">防御方法</h2><ul><li>数据增强：在训练数据集中添加经过扰动的数据，不过不采用对抗训练。</li><li>平滑轨迹：在训练和测试阶段使用轨迹平滑。由于不稳定的速度和加速度是扰动的关键，通过平滑轨迹可以一定程度缓解这种不稳定。</li><li>推理阶段扰动检测和平滑：通过SVM和计算对抗样本的均值方差等方法判断是否为扰动轨迹。</li></ul><h2 id="个人感悟">个人感悟</h2><ul><li>本文的创新点在于对抗样本+轨迹预测。</li><li>虽然方法不新，但是结合全新的方向，还是有可能发顶会的。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>论文笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>AI Security</tag>
+      
+      <tag>adversarial attack</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>2020 ICLR | 既可以减少查询次数，有可以提高攻击成功率的黑盒攻击方法</title>
     <link href="/2021/09/15/%E6%97%A2%E5%8F%AF%E4%BB%A5%E5%87%8F%E5%B0%91%E6%9F%A5%E8%AF%A2%E6%AC%A1%E6%95%B0%EF%BC%8C%E6%9C%89%E5%8F%AF%E4%BB%A5%E6%8F%90%E9%AB%98%E6%94%BB%E5%87%BB%E6%88%90%E5%8A%9F%E7%8E%87%E7%9A%84%E9%BB%91%E7%9B%92%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/"/>
     <url>/2021/09/15/%E6%97%A2%E5%8F%AF%E4%BB%A5%E5%87%8F%E5%B0%91%E6%9F%A5%E8%AF%A2%E6%AC%A1%E6%95%B0%EF%BC%8C%E6%9C%89%E5%8F%AF%E4%BB%A5%E6%8F%90%E9%AB%98%E6%94%BB%E5%87%BB%E6%88%90%E5%8A%9F%E7%8E%87%E7%9A%84%E9%BB%91%E7%9B%92%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/</url>
