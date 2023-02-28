@@ -1,0 +1,696 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Alan Chan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="技术笔记 | FSR402压力传感器压力+Unity演示 1. 方案简介 通过FSR402压力传感器检测压力数据，利用Arduino读取IO口的电压信息，将压力数据通过串口传输给电脑，python读取串口数据后将压力数据传递给Unity，并制作出两只手指挤压小球的动画展示压力大小。 2.FSR402压力传感器电路   FSR402接线图.png  3. Ardunio接收并串口发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FSR402压力传感器压力+Unity演示">
+<meta property="og:url" content="http://example.com/2023/02/05/FSR402%E5%8E%8B%E5%8A%9B%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%8B%E5%8A%9B+Unity%E6%BC%94%E7%A4%BA/index.html">
+<meta property="og:site_name" content="Alan Chan">
+<meta property="og:description" content="技术笔记 | FSR402压力传感器压力+Unity演示 1. 方案简介 通过FSR402压力传感器检测压力数据，利用Arduino读取IO口的电压信息，将压力数据通过串口传输给电脑，python读取串口数据后将压力数据传递给Unity，并制作出两只手指挤压小球的动画展示压力大小。 2.FSR402压力传感器电路   FSR402接线图.png  3. Ardunio接收并串口发">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-02-05T15:58:17.000Z">
+<meta property="article:modified_time" content="2023-02-28T08:26:08.899Z">
+<meta property="article:author" content="Alan Chan">
+<meta property="article:tag" content="Hardware">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>FSR402压力传感器压力+Unity演示 - Alan Chan</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>AlanChan</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="FSR402压力传感器压力+Unity演示"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-02-05 23:58" pubdate>
+          February 5, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          51 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">FSR402压力传感器压力+Unity演示</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="技术笔记-fsr402压力传感器压力unity演示">技术笔记 |
+FSR402压力传感器压力+Unity演示</h1>
+<h2 id="方案简介">1. 方案简介</h2>
+<p>通过FSR402压力传感器检测压力数据，利用Arduino读取IO口的电压信息，将压力数据通过串口传输给电脑，python读取串口数据后将压力数据传递给Unity，并制作出两只手指挤压小球的动画展示压力大小。</p>
+<h2 id="fsr402压力传感器电路">2.FSR402压力传感器电路</h2>
+<figure>
+<img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302131952316.png" srcset="/img/loading.gif" lazyload
+alt="FSR402接线图.png" />
+<figcaption aria-hidden="true">FSR402接线图.png</figcaption>
+</figure>
+<h2 id="ardunio接收并串口发送数据">3. Ardunio接收并串口发送数据</h2>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;Arduino.h&gt;</span></span><br><br><span class="hljs-type">int</span> fsrPin0 = A0;     <span class="hljs-comment">// A0 接口</span><br><span class="hljs-type">int</span> fsrPin1 = A1;     <span class="hljs-comment">// A0 接口</span><br><span class="hljs-type">int</span> fsrReading0;<br><span class="hljs-type">int</span> fsrReading1;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setup</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span> </span><br><span class="hljs-function"></span>&#123;<br>  <span class="hljs-built_in">Serial</span>.<span class="hljs-built_in">begin</span>(<span class="hljs-number">9600</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">loop</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span> </span><br><span class="hljs-function"></span>&#123;<br>  fsrReading0 = <span class="hljs-built_in">analogRead</span>(fsrPin0);<br>  fsrReading1 = <span class="hljs-built_in">analogRead</span>(fsrPin1);<br>  <span class="hljs-built_in">Serial</span>.<span class="hljs-built_in">print</span>(fsrReading0);<br>  <span class="hljs-built_in">Serial</span>.<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;,&quot;</span>);<br>  <span class="hljs-built_in">Serial</span>.<span class="hljs-built_in">print</span>(fsrReading1);<br>  <span class="hljs-built_in">Serial</span>.<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>  <span class="hljs-built_in">delay</span>(<span class="hljs-number">100</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="python接收数据并通过socket发送给unity">4.
+Python接收数据并通过Socket发送给Unity</h2>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-keyword">import</span> serial<br><span class="hljs-keyword">import</span> socket<br><br><span class="hljs-title">ser</span> = serial.<span class="hljs-type">Serial</span>(&#x27;<span class="hljs-type">COM3&#x27;</span>, <span class="hljs-number">9600</span>, timeout=<span class="hljs-number">0.2</span>)<br><br><span class="hljs-meta">#socket</span><br><span class="hljs-title">sock</span> = socket.socket(socket.<span class="hljs-type">AF_INET</span>, socket.<span class="hljs-type">SOCK_DGRAM</span>)<br><span class="hljs-title">serverAddressPort</span> = (<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">5054</span>)#这里的<span class="hljs-type">IP</span>地址无关紧要，因为<span class="hljs-type">Unity</span>中会搜寻全部地址，关键是端口号一致就行<br><br><span class="hljs-meta"># 接收返回的信息</span><br><span class="hljs-title">while</span> <span class="hljs-type">True</span>:<br><br>    while ser.inWaiting()&gt;<span class="hljs-number">0</span>: <br>        <span class="hljs-class"><span class="hljs-keyword">data</span> = []</span><br>        revdata = ser.readline()<br>        revdata = str(revdata)[<span class="hljs-number">2</span>:len(str(revdata))-<span class="hljs-number">3</span>]<br>        <span class="hljs-type">A0</span>,<span class="hljs-type">A1</span> = revdata.split(&#x27;,&#x27;)<br>        <span class="hljs-class"><span class="hljs-keyword">data</span>.extend([<span class="hljs-title">int</span>(<span class="hljs-type">A0</span>), int(<span class="hljs-type">A1</span>)])</span><br>        print(<span class="hljs-class"><span class="hljs-keyword">data</span>)</span><br>        sock.sendto(str.encode(str(<span class="hljs-class"><span class="hljs-keyword">data</span>)), serverAddressPort)</span><br></code></pre></td></tr></table></figure>
+<h2 id="unity配置">5. Unity配置</h2>
+<p>这里包括Unity中socket数据的接收、小球和摄像头的布置、还有挤压小球时小球Mesh变化的代码
+### 5.1 socket接收第四步中Python传来的数据 - Unity中新建Project -
+在场景（Scene）或者GameObject中新建空对象（Create
+Empty），这里我把他命名为Manger，用来存放UDP接受Python数据的Script代码。</p>
+<p><img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132006302.png" srcset="/img/loading.gif" lazyload
+alt="5-1-1.png" /> -
+将<strong>UDPReceive.cs</strong>文件拖入到Project中的Assets文件夹中
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-meta">##UDPReceive.cs##</span><br><br><span class="hljs-keyword">using</span> UnityEngine;<br><span class="hljs-keyword">using</span> System;<br><span class="hljs-keyword">using</span> System.Text;<br><span class="hljs-keyword">using</span> System.Net;<br><span class="hljs-keyword">using</span> System.Net.Sockets;<br><span class="hljs-keyword">using</span> System.Threading;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">UDPReceive</span> : <span class="hljs-title">MonoBehaviour</span><br>&#123;<br><br>    Thread receiveThread;<br>    UdpClient client; <br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> port = <span class="hljs-number">5052</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">bool</span> startRecieving = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">bool</span> printToConsole = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> data;<br><br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>()</span><br>    &#123;<br><br>        receiveThread = <span class="hljs-keyword">new</span> Thread(<br>            <span class="hljs-keyword">new</span> ThreadStart(ReceiveData));<br>        receiveThread.IsBackground = <span class="hljs-literal">true</span>;<br>        receiveThread.Start();<br>    &#125;<br><br>    <span class="hljs-comment">// receive thread</span><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ReceiveData</span>()</span><br>    &#123;<br><br>        client = <span class="hljs-keyword">new</span> UdpClient(port);<br>        <span class="hljs-keyword">while</span> (startRecieving)<br>        &#123;<br><br>            <span class="hljs-keyword">try</span><br>            &#123;<br>                IPEndPoint anyIP = <span class="hljs-keyword">new</span> IPEndPoint(IPAddress.Any, <span class="hljs-number">0</span>);<br>                <span class="hljs-built_in">byte</span>[] dataByte = client.Receive(<span class="hljs-keyword">ref</span> anyIP);<br>                data = Encoding.UTF8.GetString(dataByte);<br><br>                <span class="hljs-keyword">if</span> (printToConsole) &#123; print(data); &#125;<br>            &#125;<br>            <span class="hljs-keyword">catch</span> (Exception err)<br>            &#123;<br>                print(err.ToString());<br>            &#125;<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure> <img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132017452.png" srcset="/img/loading.gif" lazyload
+alt="5-1-3.png" /> <img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132017451.png" srcset="/img/loading.gif" lazyload
+alt="5-1-3.png" /></p>
+<h3 id="新建小球和左右摄像头">5.2 新建小球和左右摄像头</h3>
+<ul>
+<li>在Unity场景中新建小球：GameObject -&gt; 3DObject -&gt; Sphere
+*在Unity场景中左右摄像头：GameObject -&gt; Camera
+并将左右Camera移动至小球的左右侧，小球处于摄像头中心位置。这里是为了让摄像头发出射线，从而模拟两只手指抓握时发力的场景。
+<img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132018867.png" srcset="/img/loading.gif" lazyload
+alt="5-2-1.png" /></li>
+</ul>
+<h3 id="挤压小球时mesh变化的代码">5.3 挤压小球时Mesh变化的代码</h3>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39574690/article/details/124658090?spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-5-124658090-blog-102668009.pc_relevant_multi_platform_whitelistv1&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-5-124658090-blog-102668009.pc_relevant_multi_platform_whitelistv1&amp;utm_relevant_index=9">参考网址</a>
+参考网址实现效果如下： <img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132020857.gif" srcset="/img/loading.gif" lazyload
+alt="5-4.gif" /></p>
+<h3 id="参照5.3中的代码加入压力数据">5.4
+参照5.3中的代码加入压力数据</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><code class="hljs java">using System.Collections;<br>using System.Collections.Generic;<br>using UnityEngine;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MeshChangeDemo</span> : MonoBehaviour<br>&#123;<br>    <span class="hljs-keyword">public</span> UDPReceive udpReceive;<br>    <span class="hljs-keyword">public</span> MeshFilter meshFilter;<br>    <span class="hljs-keyword">public</span> Camera LeftCamera,RightCamera;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">float</span> <span class="hljs-variable">changeForce</span> <span class="hljs-operator">=</span> <span class="hljs-number">10f</span>;<span class="hljs-comment">//10f</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">float</span> <span class="hljs-variable">springForce</span> <span class="hljs-operator">=</span> <span class="hljs-number">20f</span>;<span class="hljs-comment">//20f</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">float</span> <span class="hljs-variable">forceOffset</span> <span class="hljs-operator">=</span> <span class="hljs-number">0.1f</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">float</span> <span class="hljs-variable">damping</span> <span class="hljs-operator">=</span> <span class="hljs-number">5f</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">float</span> <span class="hljs-variable">uniformScale</span> <span class="hljs-operator">=</span> <span class="hljs-number">1f</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">float</span> <span class="hljs-variable">uniformScaleRate</span> <span class="hljs-operator">=</span> <span class="hljs-number">0f</span>;<br>    <br>    <span class="hljs-keyword">private</span> Mesh mesh;<br>    <span class="hljs-keyword">private</span> Vector3[] originVertices;<br>    <span class="hljs-keyword">private</span> Vector3[] displayVertices;<br>    <span class="hljs-keyword">private</span> Vector3[] vertexVelocities;<br>    <span class="hljs-comment">// Start is called before the first frame update</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">Start</span><span class="hljs-params">()</span><br>    &#123;<br>        uniformScale = transform.localScale.x;<br>        mesh = meshFilter.mesh;<br>        originVertices = (Vector3[])mesh.vertices.Clone();<br>        displayVertices = (Vector3[])mesh.vertices.Clone();<br>        vertexVelocities = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vector3</span>[displayVertices.Length];<br>    &#125;<br><br>    <span class="hljs-comment">// Update is called once per frame</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">Update</span><span class="hljs-params">()</span><br>    &#123;<br>        RaycastHit hit;<br>                <span class="hljs-type">string</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> udpReceive.data;<br>        <br>        data = data.Remove(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);<br>        data = data.Remove(data.Length - <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);<br>        <br>        string[] points = data.Split(<span class="hljs-string">&#x27;,&#x27;</span>);<br>        <br>        <span class="hljs-type">float</span> <span class="hljs-variable">A0</span> <span class="hljs-operator">=</span> (<span class="hljs-type">float</span>.Parse(points[<span class="hljs-number">0</span>])+<span class="hljs-number">0.1f</span>)/<span class="hljs-number">850</span>;<br>        <span class="hljs-type">float</span> <span class="hljs-variable">A1</span> <span class="hljs-operator">=</span> (<span class="hljs-type">float</span>.Parse(points[<span class="hljs-number">1</span>])+<span class="hljs-number">0.1f</span>)/<span class="hljs-number">850</span>;<br>        <span class="hljs-comment">//print(A0);</span><br>        <span class="hljs-comment">//print(A1);</span><br><br>        <span class="hljs-comment">//if (A0 &gt; 0.01)</span><br>        <span class="hljs-comment">//&#123;</span><br>            <span class="hljs-keyword">if</span> (Physics.Raycast(RightCamera.ScreenPointToRay(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Vector3</span>(<span class="hljs-number">180</span>, <span class="hljs-number">180</span>, <span class="hljs-number">0</span>)), out hit))<br>            &#123;<br>                <span class="hljs-type">MeshChangeDemo</span> <span class="hljs-variable">meshChangeDemo</span> <span class="hljs-operator">=</span> hit.transform.GetComponent&lt;MeshChangeDemo&gt;();<br>                <span class="hljs-keyword">if</span> (meshChangeDemo != <span class="hljs-literal">null</span>)<br>                &#123;<br>                    meshChangeDemo.ChangeMesh(hit.point + hit.normal * forceOffset, changeForce* A0);<br>                &#125;<br>            &#125;<br><br><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; displayVertices.Length; i++)<br>            &#123;<br>                <span class="hljs-type">Vector3</span> <span class="hljs-variable">v</span> <span class="hljs-operator">=</span> vertexVelocities[i];<br>                <span class="hljs-type">Vector3</span> <span class="hljs-variable">displacement</span> <span class="hljs-operator">=</span> displayVertices[i] - originVertices[i];<br>                v -= displacement * springForce * Time.deltaTime; <span class="hljs-comment">//回弹形状</span><br>                v *= <span class="hljs-number">1f</span> - damping * Time.deltaTime;               <span class="hljs-comment">//阻尼</span><br>                vertexVelocities[i] = v;<br>                <span class="hljs-comment">//displayVertices[i] += v * (Time.deltaTime / uniformScale); //应用速度 除以uniformScale是为了兼容缩放了物体的情况 可理解为放大物体则形变更小，反之更大</span><br>                <span class="hljs-type">float</span> <span class="hljs-variable">uniform</span> <span class="hljs-operator">=</span> (uniformScale * uniformScaleRate);<br>                <span class="hljs-keyword">if</span> (uniform == <span class="hljs-number">0</span>)<br>                &#123;<br>                    uniform = <span class="hljs-number">1</span>;<br>                &#125;<br>                displayVertices[i] += v * (Time.deltaTime / uniform);<br>            &#125;<br>            mesh.vertices = displayVertices;<br>            mesh.RecalculateNormals();<br>        <span class="hljs-comment">//&#125;</span><br><br>        <span class="hljs-comment">//if (A1 &gt; 0.01)</span><br>        <span class="hljs-comment">//&#123;</span><br>            RaycastHit hit1;<br><br>            <span class="hljs-keyword">if</span> (Physics.Raycast(LeftCamera.ScreenPointToRay(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Vector3</span>(<span class="hljs-number">200</span>, <span class="hljs-number">165</span>, <span class="hljs-number">0</span>)), out hit1))<br>            &#123;<br>                <span class="hljs-type">MeshChangeDemo</span> <span class="hljs-variable">meshChangeDemo</span> <span class="hljs-operator">=</span> hit1.transform.GetComponent&lt;MeshChangeDemo&gt;();<br>                <span class="hljs-keyword">if</span> (meshChangeDemo != <span class="hljs-literal">null</span>)<br>                &#123;<br>                    meshChangeDemo.ChangeMesh(hit1.point + hit1.normal * forceOffset, changeForce* A1);<br>                &#125;<br>            &#125;<br><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; displayVertices.Length; i++)<br>            &#123;<br>                <span class="hljs-type">Vector3</span> <span class="hljs-variable">v</span> <span class="hljs-operator">=</span> vertexVelocities[i];<br>                <span class="hljs-type">Vector3</span> <span class="hljs-variable">displacement</span> <span class="hljs-operator">=</span> displayVertices[i] - originVertices[i];<br>                v -= displacement * springForce * Time.deltaTime; <span class="hljs-comment">//回弹形状</span><br>                v *= <span class="hljs-number">1f</span> - damping * Time.deltaTime;               <span class="hljs-comment">//阻尼</span><br>                vertexVelocities[i] = v;<br>                <span class="hljs-comment">//displayVertices[i] += v * (Time.deltaTime / uniformScale); //应用速度 除以uniformScale是为了兼容缩放了物体的情况 可理解为放大物体则形变更小，反之更大</span><br>                <span class="hljs-type">float</span> <span class="hljs-variable">uniform</span> <span class="hljs-operator">=</span> (uniformScale * uniformScaleRate);<br>                <span class="hljs-keyword">if</span> (uniform == <span class="hljs-number">0</span>)<br>                &#123;<br>                    uniform = <span class="hljs-number">1</span>;<br>                &#125;<br>                displayVertices[i] += v * (Time.deltaTime / uniform);<br>            &#125;<br>            mesh.vertices = displayVertices;<br>            mesh.RecalculateNormals();<br>        <span class="hljs-comment">//&#125;</span><br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">ChangeMesh</span><span class="hljs-params">(Vector3 point, <span class="hljs-type">float</span> force)</span><br>    &#123;<br>        point = transform.InverseTransformPoint(point);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; displayVertices.Length; i++)<br>        &#123;<br>            <span class="hljs-type">Vector3</span> <span class="hljs-variable">pointToVertex</span> <span class="hljs-operator">=</span> displayVertices[i] - point;<br>            <span class="hljs-comment">//注意：物体缩放了，但是这里获取到的物体网格顶点实际是没有缩放时的顶点位置，也就是会是得到的一个错误的向量 如果你的物体被缩放了。</span><br>            pointToVertex *= uniformScale;<span class="hljs-comment">//处理物体被缩放，但是模型本身顶点没缩放 导致向量与实际不符，现在乘上一个缩放系数它自身 如果是2倍则是会将向量还原到正确的倍数            </span><br>            <span class="hljs-type">float</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> force / (<span class="hljs-number">1f</span> + pointToVertex.sqrMagnitude); <span class="hljs-comment">//Fv = F / (1 + d^2) 获取顶点受力公式</span><br>            <span class="hljs-type">float</span> <span class="hljs-variable">v</span> <span class="hljs-operator">=</span> f * Time.deltaTime;                        <span class="hljs-comment">//dv = a * dt  a = F/m 设m=1，则 dv = F * dt</span><br>            vertexVelocities[i] += pointToVertex.normalized * v;<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="效果展示">6. 效果展示</h2>
+<p>FSR402+Ardunio采集数据 <img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132030807.jpg" srcset="/img/loading.gif" lazyload
+alt="采集数据.jpg" /></p>
+<p>python串口读取数据 <img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132029445.gif" srcset="/img/loading.gif" lazyload
+alt="python串口读取数据.gif" /> Unity socket接受数据 <img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132029255.gif" srcset="/img/loading.gif" lazyload
+alt="unity接受数据.gif" /></p>
+<p>Unity 挤压小球动画展示 <img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132030791.gif" srcset="/img/loading.gif" lazyload
+alt="unity小球.gif" /></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" class="category-chain-item">技术笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Hardware/">#Hardware</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>FSR402压力传感器压力+Unity演示</div>
+      <div>http://example.com/2023/02/05/FSR402压力传感器压力+Unity演示/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Alan Chan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>February 5, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/12/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
