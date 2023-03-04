@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>技术笔记 | 触觉手套物体识别</title>
+    <link href="/2023/02/28/%E8%A7%A6%E8%A7%89%E6%89%8B%E5%A5%97%E7%89%A9%E4%BD%93%E8%AF%86%E5%88%AB/"/>
+    <url>/2023/02/28/%E8%A7%A6%E8%A7%89%E6%89%8B%E5%A5%97%E7%89%A9%E4%BD%93%E8%AF%86%E5%88%AB/</url>
+    
+    <content type="html"><![CDATA[<h1 id="能识别物体的触觉手套">能识别物体的触觉手套</h1><h2 id="简介">1、简介</h2><p>希望利用触觉压力弯曲手套，结合深度学习算法，实现用手套抓取物体时能自动识别被抓取的物体类别。并搭建一个可视化界面进行展示。</p><h2 id="触觉手套">2、触觉手套</h2><p>触觉手套由16个压力传感器和6个弯曲传感器组成，16个压力传感器均匀分布在手掌用来捕获抓握物体时压力数据，6个弯曲传感器分布在手背捕获手指弯曲程度。<imgsrc="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041023674.png"alt="图片1.png" /></p><h2 id="触觉信号采集">3、触觉信号采集</h2><p>采集了19样物体的触觉信号 <imgsrc="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041026471.png"alt="图片2.png" /></p><h2 id="利用pyqtgraph搭建可视化界面">4、利用pyqtgraph搭建可视化界面</h2><p>由左侧的信号现实栏，中间的触觉数据集样本栏，右侧的预测物体和概率分布栏<imgsrc="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041029594.png"alt="image.png" /></p><h2 id="深度学习训练分类模型">5、深度学习训练分类模型</h2><p>这里简单搭建了一个CNN模型对触觉信号进行分类，效果还行可以达到80%左右。</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs routeros">def cnnModel():<br><br>    model = Sequential()<br>    model.<span class="hljs-built_in">add</span>(Conv2D(128, (2,2), input_shape=(win_len,22,1), <span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>))<br>    model.<span class="hljs-built_in">add</span>(MaxPooling2D(pool_size=(2,2), <span class="hljs-attribute">padding</span>=<span class="hljs-string">&#x27;valid&#x27;</span>))<br>    model.<span class="hljs-built_in">add</span>(Dropout(0.3))<br>    model.<span class="hljs-built_in">add</span>(Flatten())<br>    model.<span class="hljs-built_in">add</span>(Dense(256, <span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>))<br>    model.<span class="hljs-built_in">add</span>(Dense(256, <span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>))<br>    model.<span class="hljs-built_in">add</span>(Dense(16, <span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;softmax&#x27;</span>))<br>    adam = optimizers.Adam(<span class="hljs-attribute">lr</span>=0.001, <span class="hljs-attribute">decay</span>=1e-6)<br>    model.compile(<span class="hljs-attribute">loss</span>=<span class="hljs-string">&#x27;categorical_crossentropy&#x27;</span>, <span class="hljs-attribute">optimizer</span>=adam, metrics=[<span class="hljs-string">&#x27;accuracy&#x27;</span>])<br>    return model<br></code></pre></td></tr></table></figure><h2 id="效果演示">6、效果演示</h2><figure><imgsrc="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041236107.gif"alt="glove.gif" /><figcaption aria-hidden="true">glove.gif</figcaption></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hardware</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>技术笔记 | FSR402压力传感器压力+Unity演示</title>
     <link href="/2023/02/05/FSR402%E5%8E%8B%E5%8A%9B%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%8B%E5%8A%9B+Unity%E6%BC%94%E7%A4%BA/"/>
     <url>/2023/02/05/FSR402%E5%8E%8B%E5%8A%9B%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%8B%E5%8A%9B+Unity%E6%BC%94%E7%A4%BA/</url>
