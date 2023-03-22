@@ -16,22 +16,22 @@
   <meta name="author" content="Alan Chan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="能识别物体的触觉手套 1、简介 希望利用触觉压力弯曲手套，结合深度学习算法，实现用手套抓取物体时能自动识别被抓取的物体类别。并搭建一个可视化界面进行展示。 2、触觉手套 触觉手套由16个压力传感器和6个弯曲传感器组成，16个压力传感器均匀分布在手掌用来捕获抓握物体时压力数据，6个弯曲传感器分布在手背捕获手指弯曲程度。  3、触觉信号采集 采集了19样物体的触觉信号  4、利用pyq">
+    <meta name="description" content="雕刻字自动排样算法 1、简介 雕刻机自动套料软件主要用于户外广告行业，以往从业者在使用雕刻机时为达到材料最省的目的常需要进行大量人工拆分文字、图形并进行排版等的工作，耗时耗力且不够科学。因此开发一款可以实现自动拆分及套料的软件，代替以往人工操作的形式。 2、改进点  实现对中文、外文、标准多边形和特殊形状的自动套料。 针对以往的封闭图形内部的封闭图形被打散的情况进行优化。 可对排版间">
 <meta property="og:type" content="article">
-<meta property="og:title" content="技术笔记 | 触觉手套物体识别">
-<meta property="og:url" content="http://example.com/2023/02/28/%E8%A7%A6%E8%A7%89%E6%89%8B%E5%A5%97%E7%89%A9%E4%BD%93%E8%AF%86%E5%88%AB/index.html">
+<meta property="og:title" content="技术笔记 | 雕刻字自动排样算法">
+<meta property="og:url" content="http://example.com/2023/03/22/%E9%9B%95%E5%88%BB%E5%AD%97%E8%87%AA%E5%8A%A8%E6%8E%92%E6%A0%B7%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Alan Chan">
-<meta property="og:description" content="能识别物体的触觉手套 1、简介 希望利用触觉压力弯曲手套，结合深度学习算法，实现用手套抓取物体时能自动识别被抓取的物体类别。并搭建一个可视化界面进行展示。 2、触觉手套 触觉手套由16个压力传感器和6个弯曲传感器组成，16个压力传感器均匀分布在手掌用来捕获抓握物体时压力数据，6个弯曲传感器分布在手背捕获手指弯曲程度。  3、触觉信号采集 采集了19样物体的触觉信号  4、利用pyq">
+<meta property="og:description" content="雕刻字自动排样算法 1、简介 雕刻机自动套料软件主要用于户外广告行业，以往从业者在使用雕刻机时为达到材料最省的目的常需要进行大量人工拆分文字、图形并进行排版等的工作，耗时耗力且不够科学。因此开发一款可以实现自动拆分及套料的软件，代替以往人工操作的形式。 2、改进点  实现对中文、外文、标准多边形和特殊形状的自动套料。 针对以往的封闭图形内部的封闭图形被打散的情况进行优化。 可对排版间">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-02-28T07:30:00.000Z">
-<meta property="article:modified_time" content="2023-03-04T04:37:03.125Z">
+<meta property="article:published_time" content="2023-03-22T07:07:00.000Z">
+<meta property="article:modified_time" content="2023-03-22T07:46:24.147Z">
 <meta property="article:author" content="Alan Chan">
-<meta property="article:tag" content="Hardware">
+<meta property="article:tag" content="Nesting software">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>技术笔记 | 触觉手套物体识别 - Alan Chan</title>
+  <title>技术笔记 | 雕刻字自动排样算法 - Alan Chan</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="技术笔记 | 触觉手套物体识别"></span>
+            <span id="subtitle" data-typed-text="技术笔记 | 雕刻字自动排样算法"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-28 15:30" pubdate>
-          February 28, 2023 pm
+        <time datetime="2023-03-22 15:07" pubdate>
+          March 22, 2023 pm
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          840 words
+          479 words
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          8 mins
+          4 mins
         
       </span>
     
@@ -268,38 +268,29 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">技术笔记 | 触觉手套物体识别</h1>
+            <h1 style="display: none">技术笔记 | 雕刻字自动排样算法</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="能识别物体的触觉手套">能识别物体的触觉手套</h1>
+                <h1 id="雕刻字自动排样算法">雕刻字自动排样算法</h1>
 <h2 id="简介">1、简介</h2>
-<p>希望利用触觉压力弯曲手套，结合深度学习算法，实现用手套抓取物体时能自动识别被抓取的物体类别。并搭建一个可视化界面进行展示。</p>
-<h2 id="触觉手套">2、触觉手套</h2>
-<p>触觉手套由16个压力传感器和6个弯曲传感器组成，16个压力传感器均匀分布在手掌用来捕获抓握物体时压力数据，6个弯曲传感器分布在手背捕获手指弯曲程度。
+<p>雕刻机自动套料软件主要用于户外广告行业，以往从业者在使用雕刻机时为达到材料最省的目的常需要进行大量人工拆分文字、图形并进行排版等的工作，耗时耗力且不够科学。因此开发一款可以实现自动拆分及套料的软件，代替以往人工操作的形式。</p>
+<h2 id="改进点">2、改进点</h2>
+<ul>
+<li>实现对中文、外文、标准多边形和特殊形状的自动套料。</li>
+<li>针对以往的封闭图形内部的封闭图形被打散的情况进行优化。</li>
+<li>可对排版间距的大小进行选择和调整。</li>
+<li>在节省人力的同时，也保证了材料的节省。</li>
+</ul>
+<h2 id="主要方法">3、主要方法</h2>
+<p>本项目的雕刻字自动排版的算法主要由两个方面的大循环组成：一是字体排版的位置循环，二是字体排版的角度循环。由于母版中存在无穷多个可能的摆放位置点，且配合上角度的360次变化，会造成字体排版的效率低下。
+针对以上问题，该算法主要利用逐步求精的方法：母版的无数个位置点，利用间距相同的网格点代替；字体排版角度的1~360度的尝试，也是首先通过大角度的搜寻最佳角度范围，再通过小角度的细致确定。通过此方法，在保证字体排版的效果的情况下，提高了排版的效率。</p>
+<h2 id="结果展示">4、结果展示</h2>
+<p>实现了对<strong>小弦科技有限公司</strong>八个字的排样，整体效果排列紧密。
 <img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041023674.png" srcset="/img/loading.gif" lazyload
-alt="图片1.png" /></p>
-<h2 id="触觉信号采集">3、触觉信号采集</h2>
-<p>采集了19样物体的触觉信号 <img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041026471.png" srcset="/img/loading.gif" lazyload
-alt="图片2.png" /></p>
-<h2 id="利用pyqtgraph搭建可视化界面">4、利用pyqtgraph搭建可视化界面</h2>
-<p>由左侧的信号现实栏，中间的触觉数据集样本栏，右侧的预测物体和概率分布栏
-<img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041029594.png" srcset="/img/loading.gif" lazyload
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303221542547.png" srcset="/img/loading.gif" lazyload
 alt="image.png" /></p>
-<h2 id="深度学习训练分类模型">5、深度学习训练分类模型</h2>
-<p>这里简单搭建了一个CNN模型对触觉信号进行分类，效果还行可以达到80%左右。</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs routeros">def cnnModel():<br><br>    model = Sequential()<br>    model.<span class="hljs-built_in">add</span>(Conv2D(128, (2,2), input_shape=(win_len,22,1), <span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>))<br>    model.<span class="hljs-built_in">add</span>(MaxPooling2D(pool_size=(2,2), <span class="hljs-attribute">padding</span>=<span class="hljs-string">&#x27;valid&#x27;</span>))<br>    model.<span class="hljs-built_in">add</span>(Dropout(0.3))<br>    model.<span class="hljs-built_in">add</span>(Flatten())<br>    model.<span class="hljs-built_in">add</span>(Dense(256, <span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>))<br>    model.<span class="hljs-built_in">add</span>(Dense(256, <span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>))<br>    model.<span class="hljs-built_in">add</span>(Dense(16, <span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;softmax&#x27;</span>))<br>    adam = optimizers.Adam(<span class="hljs-attribute">lr</span>=0.001, <span class="hljs-attribute">decay</span>=1e-6)<br>    model.compile(<span class="hljs-attribute">loss</span>=<span class="hljs-string">&#x27;categorical_crossentropy&#x27;</span>, <span class="hljs-attribute">optimizer</span>=adam, metrics=[<span class="hljs-string">&#x27;accuracy&#x27;</span>])<br>    return model<br></code></pre></td></tr></table></figure>
-<h2 id="效果演示">6、效果演示</h2>
-<figure>
-<img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041236107.gif" srcset="/img/loading.gif" lazyload
-alt="glove.gif" />
-<figcaption aria-hidden="true">glove.gif</figcaption>
-</figure>
 
                 
               </div>
@@ -333,7 +324,7 @@ alt="glove.gif" />
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Hardware/">#Hardware</a>
+        <a href="/tags/Nesting-software/">#Nesting software</a>
       
     </div>
   
@@ -345,8 +336,8 @@ alt="glove.gif" />
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>技术笔记 | 触觉手套物体识别</div>
-      <div>http://example.com/2023/02/28/触觉手套物体识别/</div>
+      <div>技术笔记 | 雕刻字自动排样算法</div>
+      <div>http://example.com/2023/03/22/雕刻字自动排样算法/</div>
     </div>
     <div class="license-meta">
       
@@ -358,7 +349,7 @@ alt="glove.gif" />
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>February 28, 2023</div>
+          <div>March 22, 2023</div>
         </div>
       
       
@@ -390,18 +381,12 @@ alt="glove.gif" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/22/%E9%9B%95%E5%88%BB%E5%AD%97%E8%87%AA%E5%8A%A8%E6%8E%92%E6%A0%B7%E7%AE%97%E6%B3%95/" title="技术笔记 | 雕刻字自动排样算法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">技术笔记 | 雕刻字自动排样算法</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/05/FSR402%E5%8E%8B%E5%8A%9B%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%8B%E5%8A%9B+Unity%E6%BC%94%E7%A4%BA/" title="技术笔记 | FSR402压力传感器压力+Unity演示">
-                        <span class="hidden-mobile">技术笔记 | FSR402压力传感器压力+Unity演示</span>
+                      <a href="/2023/02/28/%E8%A7%A6%E8%A7%89%E6%89%8B%E5%A5%97%E7%89%A9%E4%BD%93%E8%AF%86%E5%88%AB/" title="技术笔记 | 触觉手套物体识别">
+                        <span class="hidden-mobile">技术笔记 | 触觉手套物体识别</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
