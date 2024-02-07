@@ -1,279 +1,133 @@
-
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="蛤蟆先生去看心理医生" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Alan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
 
 
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Alan Chan">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="《蛤蟆先生去看心理医生》  罗伯特·戴博德 天津人民出版社   【儿童自我状态（Child Ego State）：指一个人的存在模式：行为和感受，都像一个孩子。儿童自我状态是由我们童年残留的遗迹搭建而成，包含我们小时候体验过的所有情感。刚出生时，便具备自然型儿童中的五种最基本的情感。幼年时，这些基本情感逐渐发展演变成更微妙、更复杂的行为模式，这些行为模式成为自我的核心，融为我们自身的">
-<meta property="og:type" content="article">
-<meta property="og:title" content="读书笔记 | 蛤蟆先生去看心理医生">
-<meta property="og:url" content="http://example.com/2022/06/16/%E8%9B%A4%E8%9F%86%E5%85%88%E7%94%9F%E5%8E%BB%E7%9C%8B%E5%BF%83%E7%90%86%E5%8C%BB%E7%94%9F/index.html">
-<meta property="og:site_name" content="Alan Chan">
-<meta property="og:description" content="《蛤蟆先生去看心理医生》  罗伯特·戴博德 天津人民出版社   【儿童自我状态（Child Ego State）：指一个人的存在模式：行为和感受，都像一个孩子。儿童自我状态是由我们童年残留的遗迹搭建而成，包含我们小时候体验过的所有情感。刚出生时，便具备自然型儿童中的五种最基本的情感。幼年时，这些基本情感逐渐发展演变成更微妙、更复杂的行为模式，这些行为模式成为自我的核心，融为我们自身的">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-16T09:50:17.000Z">
-<meta property="article:modified_time" content="2022-11-24T18:15:32.995Z">
-<meta property="article:author" content="Alan Chan">
-<meta property="article:tag" content="心理学">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>读书笔记 | 蛤蟆先生去看心理医生 - Alan Chan</title>
+            
+<link rel="stylesheet" href="/css/unicons.css">
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
 
+        
+    
+    
 
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-
-  
 <meta name="generator" content="Hexo 6.3.0"></head>
-
-
-<body>
-  
-
-  <header>
     
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>AlanChan</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+    
+    <body>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                Home
-              </a>
-            </li>
-          
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                Archives
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                Categories
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                Tags
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                About
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="读书笔记 | 蛤蟆先生去看心理医生"></span>
-          
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Alan</a> 
+            <span class="description"></span> 
         </div>
-
         
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-16 17:50" pubdate>
-          June 16, 2022 pm
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          3.1k words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          26 mins
-        
-      </span>
-    
-
-    
-    
-  </div>
-
-
-        
-      </div>
-
-      
     </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
     
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">读书笔记 | 蛤蟆先生去看心理医生</h1>
+   
+    <ul class="nav">
+        
             
+                <li><a href="/">🔝首页</a></li>
             
-              <div class="markdown-body">
-                
-                <h2 id="蛤蟆先生去看心理医生">《蛤蟆先生去看心理医生》</h2>
+        
+            
+                <li><a href="/list/">📄文章</a></li>
+            
+        
+            
+                <li><a href="/about/">🌕关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">📌标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">🔖分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            蛤蟆先生去看心理医生
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%9B%A4%E8%9F%86%E5%85%88%E7%94%9F%E5%8E%BB%E7%9C%8B%E5%BF%83%E7%90%86%E5%8C%BB%E7%94%9F"><span class="post-toc-text">《蛤蟆先生去看心理医生》</span></a></li></ol>
+            
+        
+        <h2 id="蛤蟆先生去看心理医生">《蛤蟆先生去看心理医生》</h2>
 <ul>
 <li><p>罗伯特·戴博德</p></li>
 <li><p>天津人民出版社</p></li>
@@ -282,7 +136,7 @@
 <p>【<strong>儿童自我状态（Child Ego
 State）</strong>：指一个人的存在模式：行为和感受，都像一个孩子。儿童自我状态是由我们童年残留的遗迹搭建而成，包含我们小时候体验过的所有情感。刚出生时，便具备自然型儿童中的五种最基本的情感。幼年时，这些基本情感逐渐发展演变成更微妙、更复杂的行为模式，这些行为模式成为自我的核心，融为我们自身的一部分，定义了我们的一生。正因为这样，某些特定大的情形和场景会激发我们的基本行为模式，让我们自动做出反应，所以我们会和小时候一样去行动和感受。】</p>
 <p><img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211250210569.jpg" srcset="/img/loading.gif" lazyload /></p>
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211250210569.jpg" /></p>
 <p>【自然型儿童：快乐和深情”“愤怒”“悲伤”“恐惧”这五种基本情感与生俱来，相当于情绪的红黄蓝三原色。
 适应型儿童：婴幼儿虽然不能用逻辑或者有意识地去应对和防御父母观念和行为所带来的影响，但他们会从经验中学习。这样的学习不仅涉及头脑思考，也涉及全部的自我。我们学到的是一种生存的策略，并发展出一套行为来应对父母和其他人。这意味着每一个婴儿都必须学习如何调整他的基本行为，来应对自己所处的初始状况。这些调整，就像原子核一样，以后我们所有的行为都围绕着这个核心形成和发展。】</p>
 <p>作者在这抛出了儿童自我状态的概念，人们进入儿童状态后，他们的感受和行为都和小时候的自己如出一辙，与实际年龄并没有关系。每个刚出生的婴孩都具有自然型儿童的天生情感，随着孩子的身体强壮，能量充沛，情感世界也会丰富起来，但在这个过程中也有其他因素参与进来，其中最重要的就是父母，他们从一开始就对这个孩子的意识产生影响。婴儿做的几乎所有事情都会引发母亲或父亲的某些反应，这些反应对孩子具有深远的影响。</p>
@@ -292,14 +146,14 @@ src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img20221125021056
 ”我想，真正让人惊讶的是我们成年后有多少行为是从童年学来的。你只要想一想，就会发现这其实非常明显。童年体验到的最强烈的情绪，不可避免地变成我们成年后经常有的感受。有诗人曾说‘孩子是成年人的父亲’，或许就是这个意思。“
 ”对大多数人而言，成长的本质就是要减少并最终打破这样的依赖关系，这样才能成为一个独立自主的人。很少有人能完全达成这点，有些人能部分达成，而很多人则会依赖一辈子。顺从行为可能会导致有些人永远没有真正长大为人“】</p>
 <p><img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211250210160.jpg" srcset="/img/loading.gif" lazyload /></p>
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211250210160.jpg" /></p>
 <p>顺从行为的概念让我想到了我小时候根据我爸妈两人带我的性格不同，所自然发展出来的两种截然不同的相处模式。小时候爸爸的严父形象一直让我在他面前规规矩矩，相反在慈母妈妈面前我会更愿意表达自己的意见和情感。所以成绩好时我会拿试卷给我爸签名，成绩不好是我就会拿给妈妈签名。</p>
 <hr />
 <p>【<strong>撒泼</strong>正是表达愤怒的一种幼稚的方式，就像孩子听到大人说‘不行，你不能这样！’这让孩子非常愤怒，同时又感到无助，因为对那个让他生气的大人，孩子无法用暴力或者带有攻击性的行为去回应，所以唯一能做的就是躺倒在地，又踢又叫。
 不带攻击性地释放愤怒需要一段时间。其中在‘适应性儿童’的所有行为里，<strong>怄气</strong>是最能说明怎样用时间来稀释愤怒的例子。怄气可以持续很久，几个小时甚至好几天。怄气的人总是绷着脸、阴沉沉的样子，而且安静地很反常。通常这是孩子在权威之下无法随性所欲才做出的反应。成年人或许会因为输掉一场权力斗争而生闷气，也是同样的道理。说白了，怄气是输家在对强大的赢家做出反应。
 我们每一个人都必须适应各自童年的特定情形，所以就产生了各种行为模式，关联着各种情感和情绪，像马赛克的色彩一样繁多复杂。因此很多人的许多行为都源自于“适应性儿童”的自己。】</p>
 <p><img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211250211335.jpg" srcset="/img/loading.gif" lazyload /></p>
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211250211335.jpg" /></p>
 <p>【这个图的关键在于，所有这些行为策略实际上都从我们童年发展而来的防御机制，用来保护我们免受到危害。这危害可能是真是存在的，也可能是想象出来的。当成年人怄气、撒泼、郁闷或是厌烦的时候，我们会想他们究竟是行为不当，还是在无意识或无法控制地重演童年的行为模式】</p>
 <p>怄气确实是我小时候对抗奶奶和爸爸一些要求的行为，现在想来确实觉得幼稚，但是作为儿童对抗权威和表达愤怒的一种方式也无可厚非。因此也应该给接受其存在。</p>
 <hr />
@@ -309,380 +163,135 @@ State）：</strong>当处于‘父母自我状态’时，我们表现得正如
 <p>【<strong>成人自我状态（Adult Ego
 State）：</strong>成人状态下，我们能计划、考虑、决定、行动，我们能理性而合理地行事。处于这个状态时，我们所有的指示和技能都能为自己所用，而不再被脑子里父母过去的声音所驱使，也不会被童年的情绪所围困。相反，我们能思考当下的状况，基于事实来决定要做什么。】</p>
 <p><img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211250212738.jpg" srcset="/img/loading.gif" lazyload /></p>
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211250212738.jpg" /></p>
 <p>【<strong>只有在成人自我状态里，才能学到关于自我的新知识。</strong>在‘儿童自我状态’时，你会体验到童年的感受，好的坏的都有。你会再现过去的情形，再次体验过去的情绪，可你学不到任何新的东西。当处在‘父母自我状态’时，基本上你不是在挑剔就是在教育别人。不管是哪种，你都在用言行重复从父母那里学来的观念和价值观，你会想证明给别人看，让别人接受你的观念和价值观。这种确信无疑的状态，就没法给新知识和新理念留出一席之地。旧的思想主宰着你，这就是为什么单靠争论不能改变一个人的想法，只会让人更固执己见。只有处在‘成人自我状态’时，你才能思考当下的事情，评估自己的行为，或者倾听别人对你的看法而不马上驳斥，当然这一点很难做到。】</p>
 <p>从某种意义上来说，只有当一个人处于成人自我状态时，才能在心智上成为成年人，为自己负责，为自己的行为负责。就会认识到你对自己是有自主权的。因此你就知道自己有力量来改变处境，更重要的是，有力量改变自己。</p>
 <hr />
 <p>【每个人的早年经历本质上是不同的，所以每个人看到的都是一个不同的世界。有时候，人们看到的世界如此不同，连信念和预设都不尽相同，最严重的时候，这些人在之后的人生里只能经过留学冲突才能达成和解。每一个生命一定都得经历开始、中间和结束这三个阶段，而开始的阶段会显著地影响后来的阶段。因此你对世界的看法实在人生的最初阶段里形成的。】</p>
 <p><img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211250213109.jpg" srcset="/img/loading.gif" lazyload /></p>
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202211250213109.jpg" /></p>
 <p>【<strong>人生坐标：</strong>一旦我们在童年决定用哪种态度和观点，变成我们存在的底层架构。从那之后，我们便建构出一个世界，不断确认和支持这些信念和预期。换一个词来说，我们把自己的人生变成了一个<strong>‘自证预言’</strong>。
 <strong>自证预言：</strong>我们会控制事件的发生，从而确保预言会成真。我们会确保自己的世界和预期一样。】</p>
 <p>‘自证预言’上次舍友和我聊天的时候也聊起了相同的概念，叫做‘自我预言的实现’。在研二实习的时候，面对部门里面的众多学历出众和经验丰富的同事，我总是觉得自己不会出众和不能胜任一些比较有挑战性的工作（这就是我的自我预言）。因此每当组长给我委派一些比较有挑战性的工作时，我都会比较抗拒当主要的负责人，觉得应该让其他有能力的同事来带领我做。因此我也就永远无法出众和胜任有挑战性的工作，因此我的实际行为使得我之前的预言实现了。</p>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="category-chain-item">读书笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
     </div>
-  
-  
+
     <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%BF%83%E7%90%86%E5%AD%A6/">#心理学</a>
-      
+        <i>
+        
+            <span>2022-06-16</span>
+            
+                <span>该篇文章被 Alan</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E5%BF%83%E7%90%86%E5%AD%A6/'>
+                            心理学
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/'>
+                            读书笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
     </div>
-  
+    
+        
+
+     
 </div>
 
 
-              
-  
 
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>读书笔记 | 蛤蟆先生去看心理医生</div>
-      <div>http://example.com/2022/06/16/蛤蟆先生去看心理医生/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>Author</div>
-          <div>Alan Chan</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>June 16, 2022</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>Licensed under</div>
-          <div>
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
             
-              
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                    <i class="iconfont icon-by"></i>
-                  </span>
-                </a>
-              
+                
+
             
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+    
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/09/02/Obsidian%E2%80%94Templater%E6%8F%92%E4%BB%B6+QuickAdd%E6%8F%92%E4%BB%B6%E8%87%AA%E5%8A%A8%E6%A8%A1%E6%9D%BF/" title="技术笔记 | Obsidian | Templater插件+QuickAdd插件自动模板">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">技术笔记 | Obsidian | Templater插件+QuickAdd插件自动模板</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/05/31/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E8%BD%A6%E8%BE%86%E5%85%B3%E4%BA%8E%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7%E7%A0%94%E7%A9%B6/" title="论文笔记 | 2020 IEEE| 自动驾驶关于对抗攻击的鲁棒性研究">
-                        <span class="hidden-mobile">论文笔记 | 2020 IEEE| 自动驾驶关于对抗攻击的鲁棒性研究</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+
+
                 </div>
-              
-            </div>
-
             
-          </article>
-        </div>
-      </div>
-    </div>
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
 
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
 
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
-</body>
 </html>

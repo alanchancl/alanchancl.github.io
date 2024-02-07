@@ -1,669 +1,278 @@
-
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="触觉手套物体识别" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Alan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
 
 
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Alan Chan">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="能识别物体的触觉手套 1、简介 希望利用触觉压力弯曲手套，结合深度学习算法，实现用手套抓取物体时能自动识别被抓取的物体类别。并搭建一个可视化界面进行展示。 2、触觉手套 触觉手套由16个压力传感器和6个弯曲传感器组成，16个压力传感器均匀分布在手掌用来捕获抓握物体时压力数据，6个弯曲传感器分布在手背捕获手指弯曲程度。  3、触觉信号采集 采集了19样物体的触觉信号  4、利用pyq">
-<meta property="og:type" content="article">
-<meta property="og:title" content="技术笔记 | 触觉手套物体识别">
-<meta property="og:url" content="http://example.com/2023/02/28/%E8%A7%A6%E8%A7%89%E6%89%8B%E5%A5%97%E7%89%A9%E4%BD%93%E8%AF%86%E5%88%AB/index.html">
-<meta property="og:site_name" content="Alan Chan">
-<meta property="og:description" content="能识别物体的触觉手套 1、简介 希望利用触觉压力弯曲手套，结合深度学习算法，实现用手套抓取物体时能自动识别被抓取的物体类别。并搭建一个可视化界面进行展示。 2、触觉手套 触觉手套由16个压力传感器和6个弯曲传感器组成，16个压力传感器均匀分布在手掌用来捕获抓握物体时压力数据，6个弯曲传感器分布在手背捕获手指弯曲程度。  3、触觉信号采集 采集了19样物体的触觉信号  4、利用pyq">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-02-28T07:30:00.000Z">
-<meta property="article:modified_time" content="2023-03-04T04:37:03.125Z">
-<meta property="article:author" content="Alan Chan">
-<meta property="article:tag" content="Hardware">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>技术笔记 | 触觉手套物体识别 - Alan Chan</title>
+            
+<link rel="stylesheet" href="/css/unicons.css">
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
 
+        
+    
+    
 
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-
-  
 <meta name="generator" content="Hexo 6.3.0"></head>
-
-
-<body>
-  
-
-  <header>
     
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>AlanChan</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+    
+    <body>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                Home
-              </a>
-            </li>
-          
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                Archives
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                Categories
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                Tags
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                About
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="技术笔记 | 触觉手套物体识别"></span>
-          
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Alan</a> 
+            <span class="description"></span> 
         </div>
-
         
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-28 15:30" pubdate>
-          February 28, 2023 pm
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          840 words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          8 mins
-        
-      </span>
-    
-
-    
-    
-  </div>
-
-
-        
-      </div>
-
-      
     </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
     
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">技术笔记 | 触觉手套物体识别</h1>
+   
+    <ul class="nav">
+        
             
+                <li><a href="/">🔝首页</a></li>
             
-              <div class="markdown-body">
-                
-                <h1 id="能识别物体的触觉手套">能识别物体的触觉手套</h1>
+        
+            
+                <li><a href="/list/">📄文章</a></li>
+            
+        
+            
+                <li><a href="/about/">🌕关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">📌标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">🔖分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            触觉手套物体识别
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%83%BD%E8%AF%86%E5%88%AB%E7%89%A9%E4%BD%93%E7%9A%84%E8%A7%A6%E8%A7%89%E6%89%8B%E5%A5%97"><span class="post-toc-text">能识别物体的触觉手套</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="post-toc-text">1、简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A7%A6%E8%A7%89%E6%89%8B%E5%A5%97"><span class="post-toc-text">2、触觉手套</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A7%A6%E8%A7%89%E4%BF%A1%E5%8F%B7%E9%87%87%E9%9B%86"><span class="post-toc-text">3、触觉信号采集</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%A9%E7%94%A8pyqtgraph%E6%90%AD%E5%BB%BA%E5%8F%AF%E8%A7%86%E5%8C%96%E7%95%8C%E9%9D%A2"><span class="post-toc-text">4、利用pyqtgraph搭建可视化界面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">5、深度学习训练分类模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%95%88%E6%9E%9C%E6%BC%94%E7%A4%BA"><span class="post-toc-text">6、效果演示</span></a></li></ol></li></ol>
+            
+        
+        <h1 id="能识别物体的触觉手套">能识别物体的触觉手套</h1>
 <h2 id="简介">1、简介</h2>
 <p>希望利用触觉压力弯曲手套，结合深度学习算法，实现用手套抓取物体时能自动识别被抓取的物体类别。并搭建一个可视化界面进行展示。</p>
 <h2 id="触觉手套">2、触觉手套</h2>
 <p>触觉手套由16个压力传感器和6个弯曲传感器组成，16个压力传感器均匀分布在手掌用来捕获抓握物体时压力数据，6个弯曲传感器分布在手背捕获手指弯曲程度。
 <img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041023674.png" srcset="/img/loading.gif" lazyload
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041023674.png"
 alt="图片1.png" /></p>
 <h2 id="触觉信号采集">3、触觉信号采集</h2>
 <p>采集了19样物体的触觉信号 <img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041026471.png" srcset="/img/loading.gif" lazyload
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041026471.png"
 alt="图片2.png" /></p>
 <h2 id="利用pyqtgraph搭建可视化界面">4、利用pyqtgraph搭建可视化界面</h2>
 <p>由左侧的信号现实栏，中间的触觉数据集样本栏，右侧的预测物体和概率分布栏
 <img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041029594.png" srcset="/img/loading.gif" lazyload
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041029594.png"
 alt="image.png" /></p>
 <h2 id="深度学习训练分类模型">5、深度学习训练分类模型</h2>
 <p>这里简单搭建了一个CNN模型对触觉信号进行分类，效果还行可以达到80%左右。</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs routeros">def cnnModel():<br><br>    model = Sequential()<br>    model.<span class="hljs-built_in">add</span>(Conv2D(128, (2,2), input_shape=(win_len,22,1), <span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>))<br>    model.<span class="hljs-built_in">add</span>(MaxPooling2D(pool_size=(2,2), <span class="hljs-attribute">padding</span>=<span class="hljs-string">&#x27;valid&#x27;</span>))<br>    model.<span class="hljs-built_in">add</span>(Dropout(0.3))<br>    model.<span class="hljs-built_in">add</span>(Flatten())<br>    model.<span class="hljs-built_in">add</span>(Dense(256, <span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>))<br>    model.<span class="hljs-built_in">add</span>(Dense(256, <span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;relu&#x27;</span>))<br>    model.<span class="hljs-built_in">add</span>(Dense(16, <span class="hljs-attribute">activation</span>=<span class="hljs-string">&#x27;softmax&#x27;</span>))<br>    adam = optimizers.Adam(<span class="hljs-attribute">lr</span>=0.001, <span class="hljs-attribute">decay</span>=1e-6)<br>    model.compile(<span class="hljs-attribute">loss</span>=<span class="hljs-string">&#x27;categorical_crossentropy&#x27;</span>, <span class="hljs-attribute">optimizer</span>=adam, metrics=[<span class="hljs-string">&#x27;accuracy&#x27;</span>])<br>    return model<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def cnnModel():</span><br><span class="line"></span><br><span class="line">    model = Sequential()</span><br><span class="line">    model.add(Conv2D(128, (2,2), input_shape=(win_len,22,1), activation=&#x27;relu&#x27;))</span><br><span class="line">    model.add(MaxPooling2D(pool_size=(2,2), padding=&#x27;valid&#x27;))</span><br><span class="line">    model.add(Dropout(0.3))</span><br><span class="line">    model.add(Flatten())</span><br><span class="line">    model.add(Dense(256, activation=&#x27;relu&#x27;))</span><br><span class="line">    model.add(Dense(256, activation=&#x27;relu&#x27;))</span><br><span class="line">    model.add(Dense(16, activation=&#x27;softmax&#x27;))</span><br><span class="line">    adam = optimizers.Adam(lr=0.001, decay=1e-6)</span><br><span class="line">    model.compile(loss=&#x27;categorical_crossentropy&#x27;, optimizer=adam, metrics=[&#x27;accuracy&#x27;])</span><br><span class="line">    return model</span><br></pre></td></tr></table></figure>
 <h2 id="效果演示">6、效果演示</h2>
 <figure>
 <img
-src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041236107.gif" srcset="/img/loading.gif" lazyload
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202303041236107.gif"
 alt="glove.gif" />
 <figcaption aria-hidden="true">glove.gif</figcaption>
 </figure>
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" class="category-chain-item">技术笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
     </div>
-  
-  
+
     <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Hardware/">#Hardware</a>
-      
+        <i>
+        
+            <span>2023-02-28</span>
+            
+                <span>该篇文章被 Alan</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/'>
+                            嵌入式
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/'>
+                            技术笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
     </div>
-  
+    
+        
+
+     
 </div>
 
 
-              
-  
 
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>技术笔记 | 触觉手套物体识别</div>
-      <div>http://example.com/2023/02/28/触觉手套物体识别/</div>
-    </div>
-    <div class="license-meta">
-      
-        <div class="license-meta-item">
-          <div>Author</div>
-          <div>Alan Chan</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>February 28, 2023</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>Licensed under</div>
-          <div>
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
             
-              
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                    <i class="iconfont icon-by"></i>
-                  </span>
-                </a>
-              
+                
+
             
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+    
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/03/22/%E9%9B%95%E5%88%BB%E5%AD%97%E8%87%AA%E5%8A%A8%E6%8E%92%E6%A0%B7%E7%AE%97%E6%B3%95/" title="技术笔记 | 雕刻字自动排样算法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">技术笔记 | 雕刻字自动排样算法</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/02/05/FSR402%E5%8E%8B%E5%8A%9B%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%8B%E5%8A%9B+Unity%E6%BC%94%E7%A4%BA/" title="技术笔记 | FSR402压力传感器压力+Unity演示">
-                        <span class="hidden-mobile">技术笔记 | FSR402压力传感器压力+Unity演示</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+
+
                 </div>
-              
-            </div>
-
             
-          </article>
-        </div>
-      </div>
-    </div>
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
 
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
 
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
-</body>
 </html>

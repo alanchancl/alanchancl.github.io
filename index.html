@@ -1,938 +1,268 @@
-
-
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Alan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
 
 
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Alan Chan">
-  <meta name="keywords" content="">
-  
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Alan Chan">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Alan Chan">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="Alan Chan">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>Alan Chan</title>
+            
+<link rel="stylesheet" href="/css/unicons.css">
 
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
 
+        
+    
+    
 
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-
-  
 <meta name="generator" content="Hexo 6.3.0"></head>
-
-
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 100vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>AlanChan</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                Home
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                Archives
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                Categories
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                Tags
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                About
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/HomePage.jpg') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="And the light goes on shining in the dark; it is not overcome by the dark. [John 1:5]"></span>
-          
-        </div>
-
-        
-      </div>
-
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-  <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
+    <body>
         
-        <a href="/2023/05/31/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E4%B8%AD%E7%89%A9%E7%90%86%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7%E7%A0%94%E7%A9%B6/" target="_self">
-          论文笔记 | 2020 IEEE| 自动驾驶关于对抗攻击的鲁棒性研究
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/31/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E4%B8%AD%E7%89%A9%E7%90%86%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7%E7%A0%94%E7%A9%B6/" target="_self">
-        <div>
-          2020 IEEE| 自动驾驶中物理对抗攻击的鲁棒性研究 论文名称：Towards Robust Sensing for Autonomous Vehicles: An adversarial perspective 作者单位：Apostolos Modas / 伦敦玛丽女王大学 收录时间：2020 / IEEE Signal Processing Magazine 文章亮点：总结了
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-31 11:30" pubdate>
-              2023-05-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" class="category-chain-item">论文笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/AI-Security/">#AI Security</a>
-            
-              <a href="/tags/Adversarial-Attack/">#Adversarial Attack</a>
-            
-              <a href="/tags/Autonomous-Vehicles/">#Autonomous Vehicles</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/03/22/%E9%9B%95%E5%88%BB%E5%AD%97%E8%87%AA%E5%8A%A8%E6%8E%92%E6%A0%B7%E7%AE%97%E6%B3%95/" target="_self">
-          技术笔记 | 雕刻字自动排样算法
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/22/%E9%9B%95%E5%88%BB%E5%AD%97%E8%87%AA%E5%8A%A8%E6%8E%92%E6%A0%B7%E7%AE%97%E6%B3%95/" target="_self">
-        <div>
-          雕刻字自动排样算法 1、简介 雕刻机自动套料软件主要用于户外广告行业，以往从业者在使用雕刻机时为达到材料最省的目的常需要进行大量人工拆分文字、图形并进行排版等的工作，耗时耗力且不够科学。因此开发一款可以实现自动拆分及套料的软件，代替以往人工操作的形式。 2、改进点  实现对中文、外文、标准多边形和特殊形状的自动套料。 针对以往的封闭图形内部的封闭图形被打散的情况进行优化。 可对排版间
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-03-22 15:07" pubdate>
-              2023-03-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" class="category-chain-item">技术笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Nesting-software/">#Nesting software</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/02/28/%E8%A7%A6%E8%A7%89%E6%89%8B%E5%A5%97%E7%89%A9%E4%BD%93%E8%AF%86%E5%88%AB/" target="_self">
-          技术笔记 | 触觉手套物体识别
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/28/%E8%A7%A6%E8%A7%89%E6%89%8B%E5%A5%97%E7%89%A9%E4%BD%93%E8%AF%86%E5%88%AB/" target="_self">
-        <div>
-          能识别物体的触觉手套 1、简介 希望利用触觉压力弯曲手套，结合深度学习算法，实现用手套抓取物体时能自动识别被抓取的物体类别。并搭建一个可视化界面进行展示。 2、触觉手套 触觉手套由16个压力传感器和6个弯曲传感器组成，16个压力传感器均匀分布在手掌用来捕获抓握物体时压力数据，6个弯曲传感器分布在手背捕获手指弯曲程度。  3、触觉信号采集 采集了19样物体的触觉信号  4、利用pyq
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-02-28 15:30" pubdate>
-              2023-02-28
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" class="category-chain-item">技术笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Hardware/">#Hardware</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/02/05/FSR402%E5%8E%8B%E5%8A%9B%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%8B%E5%8A%9B+Unity%E6%BC%94%E7%A4%BA/" target="_self">
-          技术笔记 | FSR402压力传感器压力+Unity演示
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/05/FSR402%E5%8E%8B%E5%8A%9B%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%8B%E5%8A%9B+Unity%E6%BC%94%E7%A4%BA/" target="_self">
-        <div>
-          FSR402压力传感器压力+Unity演示 1. 方案简介 通过FSR402压力传感器检测压力数据，利用Arduino读取IO口的电压信息，将压力数据通过串口传输给电脑，python读取串口数据后将压力数据传递给Unity，并制作出两只手指挤压小球的动画展示压力大小。 2.FSR402压力传感器电路   FSR402接线图.png  3. Ardunio接收并串口发送数据 123
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-02-05 23:58" pubdate>
-              2023-02-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" class="category-chain-item">技术笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Hardware/">#Hardware</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/02/01/PyTorch%20Geometric(PyG)%20%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85/" target="_self">
-          技术笔记 | PyTorch Geometric(PyG) 库的安装
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/01/PyTorch%20Geometric(PyG)%20%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85/" target="_self">
-        <div>
-          PyTorch Geometric(PyG) 库的安装 PyG库简介PyG的全称是 PyTorch Geometric,是一款基于 PyTorch 的几何深度学习框架,可以简单方便的实现图神经网络。以下为安装过程。 以下是我的Requirements.txt： 1234Python == 3.8cuda == 10.2Pytorch == 1.5.1torch-geometric==1.5
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-02-01 14:20" pubdate>
-              2023-02-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" class="category-chain-item">技术笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/PyTorch-Geometric-PyG/">#PyTorch Geometric(PyG)</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/10/12/hello-world/" target="_self">
-          Hello World
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/12/hello-world/" target="_self">
-        <div>
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-10-12 17:39" pubdate>
-              2022-10-12
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/09/02/Obsidian%E2%80%94Templater%E6%8F%92%E4%BB%B6+QuickAdd%E6%8F%92%E4%BB%B6%E8%87%AA%E5%8A%A8%E6%A8%A1%E6%9D%BF/" target="_self">
-          技术笔记 | Obsidian | Templater插件+QuickAdd插件自动模板
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/02/Obsidian%E2%80%94Templater%E6%8F%92%E4%BB%B6+QuickAdd%E6%8F%92%E4%BB%B6%E8%87%AA%E5%8A%A8%E6%A8%A1%E6%9D%BF/" target="_self">
-        <div>
-          Obsidian | Templater插件+QuickAdd插件自动模板 Obsidian黑曜石是一个功能强大的知识管理软件，是一款功能强大的带有关系图谱功能的双向链笔记，它可基于纯文本Markdown文件的本地文件夹上运行。  Templater插件可以在不同文件夹中调用不同模板，生成新的文件。适合生成工作日报、论文笔记这些格式固定的文档。 QuickAdd插件可以让Template
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-02 14:20" pubdate>
-              2022-09-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" class="category-chain-item">技术笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Obsidian/">#Obsidian</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/06/16/%E8%9B%A4%E8%9F%86%E5%85%88%E7%94%9F%E5%8E%BB%E7%9C%8B%E5%BF%83%E7%90%86%E5%8C%BB%E7%94%9F/" target="_self">
-          读书笔记 | 蛤蟆先生去看心理医生
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/16/%E8%9B%A4%E8%9F%86%E5%85%88%E7%94%9F%E5%8E%BB%E7%9C%8B%E5%BF%83%E7%90%86%E5%8C%BB%E7%94%9F/" target="_self">
-        <div>
-          《蛤蟆先生去看心理医生》  罗伯特·戴博德 天津人民出版社   【儿童自我状态（Child Ego State）：指一个人的存在模式：行为和感受，都像一个孩子。儿童自我状态是由我们童年残留的遗迹搭建而成，包含我们小时候体验过的所有情感。刚出生时，便具备自然型儿童中的五种最基本的情感。幼年时，这些基本情感逐渐发展演变成更微妙、更复杂的行为模式，这些行为模式成为自我的核心，融为我们自身的
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-06-16 17:50" pubdate>
-              2022-06-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="category-chain-item">读书笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%BF%83%E7%90%86%E5%AD%A6/">#心理学</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/31/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E8%BD%A6%E8%BE%86%E5%85%B3%E4%BA%8E%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7%E7%A0%94%E7%A9%B6/" target="_self">
-          论文笔记 | 2020 IEEE| 自动驾驶关于对抗攻击的鲁棒性研究
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/31/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E8%BD%A6%E8%BE%86%E5%85%B3%E4%BA%8E%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7%E7%A0%94%E7%A9%B6/" target="_self">
-        <div>
-          2020 IEEE| 自动驾驶中物理对抗攻击的鲁棒性研究 论文名称：Towards Robust Sensing for Autonomous Vehicles: An adversarial perspective 作者单位：Apostolos Modas / 伦敦玛丽女王大学 收录时间：2020 / IEEE Signal Processing Magazine 文章亮点：
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-31 11:30" pubdate>
-              2022-05-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" class="category-chain-item">论文笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/AI-Security/">#AI Security</a>
-            
-              <a href="/tags/Adversarial-Attack/">#Adversarial Attack</a>
-            
-              <a href="/tags/Autonomous-Vehicles/">#Autonomous Vehicles</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/01/%E8%A1%8C%E4%BA%BA%E6%A3%80%E6%B5%8B%E4%B8%AD%E7%9A%843D%E7%89%A9%E7%90%86%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95/" target="_self">
-          论文笔记 | 2022 CVPR | 行人检测中的3D物理对抗样本生成方法
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/01/%E8%A1%8C%E4%BA%BA%E6%A3%80%E6%B5%8B%E4%B8%AD%E7%9A%843D%E7%89%A9%E7%90%86%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95/" target="_self">
-        <div>
-          2022 CVPR | 行人检测中的3D物理对抗样本生成方法 论文名称：Adversarial Texture for Fooling Person Detectors in the Physical World 作者单位：Zhanhao Hu / 清华大学 收录时间：2022 CVPR 文章亮点：提出了TC-EGA物理对抗样本生成方法，生成可以在多角度进行攻击的3D对抗纹理。并将生成
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-01 11:30" pubdate>
-              2022-05-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" class="category-chain-item">论文笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/AI-Security/">#AI Security</a>
-            
-              <a href="/tags/adversarial-attack/">#adversarial attack</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-              </div>
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
             </div>
-          </div>
-        </div>
-      </div>
-    
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom index-main">
+                    <!-- 这个header就是特指index的头部 -->
 
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
 
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+
+    <div style="text-align: left;">
+
+        <a class="index-logo" href="/">Alan</a>
+        <div style="margin-bottom: 12px;"> 
+            
+                
+                    🔝首页
+                
+            
+                
+                    &nbsp / &nbsp<a href="/list/">📄文章</a>
+                
+            
+                
+                    &nbsp / &nbsp<a href="/about/">🌕关于</a>
+                
+            
+                
+                    &nbsp / &nbsp<a href="/tags/">📌标签</a>
+                
+            
+                
+                    &nbsp / &nbsp<a href="/categories/">🔖分类</a>
+                
+            
         </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
     </div>
-  </div>
+
+                    <div class="post-main">
+    
+    
+       
+       
+       
+            <div class="post-md">
+                <p><img
+src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202402071109755.JPG" /></p>
+<table>
+<tr>
+<th width="120">
+</th>
+<th>
+</th>
+</tr>
+<tr>
+<td>
+🎯项目：
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td style="text-align: left;">
+leetcode200道
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td style="text-align: left;">
+阅读《卡拉马佐夫兄弟》
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td style="text-align: left;">
+anki 写30篇文章，不包括摘抄（2/30）
+</td>
+</tr>
+<tr>
+<td>
+🌟期待：
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td style="text-align: left;">
+看海
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td style="text-align: left;">
+出国玩一次
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td style="text-align: left;">
+《我的天才女友》第四季
+</td>
+</tr>
+<tr>
+<td>
+💪年度任务
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td style="text-align: left;">
+跳槽
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td style="text-align: left;">
+投稿
+</td>
+</tr>
+</table>
+
+            </div>
+    
+</div> 
+                    <div class="footer">
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+         
+            
+                
+                <span class="index-footer-last-span">Email:<a href="mailto:alanchan_cl@163.com" title="alanchan_cl@163.com">alanchan_cl@163.com</a></span>
+            
+        
+    
 </div>
 
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+    
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
     
 
     
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
 
 
 
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  <script  src="/js/local-search.js" ></script>
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
 
 
 
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
 
 
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
-</body>
 </html>
