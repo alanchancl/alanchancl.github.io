@@ -1,3 +1,19 @@
+"zhao":
+  - firstname: ["Lu"]
+    url: https://scholar.google.com.hk/citations?user=Rwf1xF0AAAAJ
+
+"chen":
+  - firstname: ["Calvin Yu-Chian"]
+    url: https://www.ece.pku.edu.cn/info/1053/2659.htm
+
+"zhu":
+  - firstname: ["Yingzhao"]
+    url: https://kc.cnki.net/detail/expert?sm=gTqMJBZlC2IQc7U+GYyv6tDxLh2ND9XBw2yfoMBuW7VN68AOI5jVDwum9aXBL0q8oFmGyXntZtC3HPPjqk8TXCIdqWIBcpbJh8+fabHqPRcWlwtcssKjZIW5SjOm7bl8mVGhyTzB4S2mbS63RJccNw==
+
+"li":
+  - firstname: ["Man"]
+    url: https://kc.cnki.net/detail/expert?code=000040091269
+
 "adams":
   - firstname: ["Edwin", "E.", "E. P.", "Edwin Plimpton"]
     url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams

@@ -1,9 +1,8 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
 
-"PhysRev":
-  url: https://journals.aps.org/
+"Med Phys":
+  url: https://aapm.onlinelibrary.wiley.com/journal/24734209
+  color: "##1a5dad"
 
-"Vision":
-  color: "#009f36"
+"Sci Rep":
+  url: https://www.nature.com/srep/
+  color: "#009f76"
