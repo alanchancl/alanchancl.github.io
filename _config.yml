@@ -86,8 +86,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio # blog_name will be displayed in your blog page
-blog_description: a simple whitespace theme for academics
+blog_name: 陈伦的笔记本 # blog_name will be displayed in your blog page
+blog_description: 记录思考的片段，汇聚论文笔记、技术探索与读书杂记
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
@@ -255,8 +255,8 @@ jekyll-archives:
   books:
     enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
 
-display_tags: ["formatting", "images", "links", "math", "code", "blockquotes"] # these tags will be displayed on the front page of your blog
-display_categories: ["external-services"] # these categories will be displayed on the front page of your blog
+display_tags: ["AI安全", "对抗攻击", "对抗防御", "自动驾驶"] # these tags will be displayed on the front page of your blog
+display_categories: ["技术笔记", "读书笔记", "论文笔记"] # these categories will be displayed on the front page of your blog
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
