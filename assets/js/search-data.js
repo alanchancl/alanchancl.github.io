@@ -72,345 +72,224 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/blog/";
               },
-            },{id: "post-a-post-with-plotly-js",
+            },{id: "post-自动驾驶关于对抗攻击的鲁棒性研究",
         
-          title: "a post with plotly.js",
+          title: "自动驾驶关于对抗攻击的鲁棒性研究",
         
-        description: "this is what included plotly.js code could look like",
+        description: "探讨自动驾驶中物理对抗攻击的种类及其对系统安全性的影响，分析不同传感器面临的对抗攻击方法，并提出相应的防御策略。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/plotly/";
+            window.location.href = "/blog/2023/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E4%B8%AD%E7%89%A9%E7%90%86%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7%E7%A0%94%E7%A9%B6/";
           
         },
-      },{id: "post-a-post-with-image-galleries",
+      },{id: "post-雕刻字自动排样算法",
         
-          title: "a post with image galleries",
+          title: "雕刻字自动排样算法",
         
-        description: "this is what included image galleries could look like",
+        description: "本文介绍了一种雕刻字自动排样算法，旨在提高雕刻机的排版效率，减少人工操作，节省材料成本。该算法能够自动处理中文、外文及各种形状的文字排版，优化封闭图形的排版效果，并允许用户自定义排版间距，适用于户外广告行业的实际需求。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/photo-gallery/";
+            window.location.href = "/blog/2023/%E9%9B%95%E5%88%BB%E5%AD%97%E8%87%AA%E5%8A%A8%E6%8E%92%E6%A0%B7%E7%AE%97%E6%B3%95/";
           
         },
-      },{id: "post-a-post-with-tabs",
+      },{id: "post-能识别物体的触觉手套",
         
-          title: "a post with tabs",
+          title: "能识别物体的触觉手套",
         
-        description: "this is what included tabs in a post could look like",
+        description: "本文介绍了一种基于触觉手套的物体识别系统，利用深度学习算法实现对抓取物体的自动识别，旨在提升人机交互的智能化水平。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/tabs/";
+            window.location.href = "/blog/2023/%E8%A7%A6%E8%A7%89%E6%89%8B%E5%A5%97%E7%89%A9%E4%BD%93%E8%AF%86%E5%88%AB/";
           
         },
-      },{id: "post-a-post-with-typograms",
+      },{id: "post-fsr402压力传感器unity演示",
         
-          title: "a post with typograms",
+          title: "FSR402压力传感器Unity演示",
         
-        description: "this is what included typograms code could look like",
+        description: "使用FSR402压力传感器采集压力数据并通过Unity进行可视化演示",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/typograms/";
+            window.location.href = "/blog/2023/FSR402%E5%8E%8B%E5%8A%9B%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%8B%E5%8A%9B-Unity%E6%BC%94%E7%A4%BA.md/";
           
         },
-      },{id: "post-a-post-that-can-be-cited",
+      },{id: "post-pytorch-geometric-pyg-库的安装",
         
-          title: "a post that can be cited",
+          title: "PyTorch Geometric(PyG) 库的安装",
         
-        description: "this is what a post that can be cited looks like",
+        description: "PyTorch Geometric(PyG)库的安装教程，包括环境配置、CUDA安装和依赖包安装的详细步骤",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/post-citation/";
+            window.location.href = "/blog/2023/PyTorch-Geometric(PyG)-%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85/";
           
         },
-      },{id: "post-a-post-with-pseudo-code",
+      },{id: "post-obsidian-templater插件-quickadd插件自动模板",
         
-          title: "a post with pseudo code",
+          title: "Obsidian | Templater插件+QuickAdd插件自动模板",
         
-        description: "this is what included pseudo code could look like",
+        description: "Obsidian Templater插件和QuickAdd插件的安装与使用教程，包括模板创建和自动命名功能",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/pseudocode/";
+            window.location.href = "/blog/2022/Obsidian-Templater%E6%8F%92%E4%BB%B6+QuickAdd%E6%8F%92%E4%BB%B6%E8%87%AA%E5%8A%A8%E6%A8%A1%E6%9D%BF/";
           
         },
-      },{id: "post-a-post-with-code-diff",
+      },{id: "post-蛤蟆先生去看心理医生",
         
-          title: "a post with code diff",
+          title: "蛤蟆先生去看心理医生",
         
-        description: "this is how you can display code diffs",
+        description: "本文探讨了儿童自我状态的概念，分析了其对个体行为和情感的深远影响，旨在帮助读者理解童年经历如何塑造成年后的自我认知与情感反应。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/code-diff/";
+            window.location.href = "/blog/2022/%E8%9B%A4%E8%9F%86%E5%85%88%E7%94%9F%E5%8E%BB%E7%9C%8B%E5%BF%83%E7%90%86%E5%8C%BB%E7%94%9F/";
           
         },
-      },{id: "post-a-post-with-advanced-image-components",
+      },{id: "post-行人检测中的3d物理对抗样本生成方法",
         
-          title: "a post with advanced image components",
+          title: "行人检测中的3D物理对抗样本生成方法",
         
-        description: "this is what advanced image components could look like",
+        description: "本文介绍了一种新颖的3D物理对抗样本生成方法，旨在通过生成可在多角度进行攻击的对抗纹理，提升行人检测模型的攻击效果。该方法利用TC-EGA技术，将对抗纹理制作成衣物，成功欺骗行人检测系统，展示了在实际环境中对抗攻击的潜力和应用前景。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/advanced-images/";
+            window.location.href = "/blog/2022/%E8%A1%8C%E4%BA%BA%E6%A3%80%E6%B5%8B%E4%B8%AD%E7%9A%843D%E7%89%A9%E7%90%86%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95/";
           
         },
-      },{id: "post-a-post-with-vega-lite",
+      },{id: "post-秋园",
         
-          title: "a post with vega lite",
+          title: "秋园",
         
-        description: "this is what included vega lite code could look like",
+        description: "本文探讨了杨本芬的作品《秋园》，通过对家庭历史的回顾，展现了普通人在时代洪流中的挣扎与坚韧，尤其是母亲与女儿之间深厚的情感纽带。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/vega-lite/";
+            window.location.href = "/blog/2022/%E7%A7%8B%E5%9B%AD/";
           
         },
-      },{id: "post-a-post-with-geojson",
+      },{id: "post-硅谷钢铁侠-埃隆-马斯克的冒险人生",
         
-          title: "a post with geojson",
+          title: "硅谷钢铁侠：埃隆·马斯克的冒险人生",
         
-        description: "this is what included geojson code could look like",
+        description: "本文探讨了埃隆·马斯克的创业历程与成就，分析了他在电动汽车、航空航天和可再生能源等领域的创新与影响力，旨在激励更多企业家关注人类未来的发展。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/geojson-map/";
+            window.location.href = "/blog/2022/%E7%A1%85%E8%B0%B7%E9%92%A2%E9%93%81%E4%BE%A0-%E5%9F%83%E9%9A%86-%E9%A9%AC%E6%96%AF%E5%85%8B%E7%9A%84%E5%86%92%E9%99%A9%E4%BA%BA%E7%94%9F/";
           
         },
-      },{id: "post-a-post-with-echarts",
+      },{id: "post-自动驾驶轨迹预测中的对抗样本",
         
-          title: "a post with echarts",
+          title: "自动驾驶轨迹预测中的对抗样本",
         
-        description: "this is what included echarts code could look like",
+        description: "探讨了自动驾驶轨迹预测中的对抗样本生成方法及其对模型鲁棒性的影响，分析了不同攻击方式对轨迹预测的干扰程度，并提出了相应的防御策略。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/echarts/";
+            window.location.href = "/blog/2022/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E8%BD%A8%E8%BF%B9%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC/";
           
         },
-      },{id: "post-a-post-with-chart-js",
+      },{id: "post-既可以减少查询次数-有可以提高攻击成功率的黑盒攻击方法",
         
-          title: "a post with chart.js",
+          title: "既可以减少查询次数，有可以提高攻击成功率的黑盒攻击方法",
         
-        description: "this is what included chart.js code could look like",
+        description: "该方法通过结合transfer-based和score-based的思路，既可以减少查询次数，又可以提高黑盒攻击的成功率，是一种创新的黑盒攻击样本生成方法。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/chartjs/";
+            window.location.href = "/blog/2021/%E6%97%A2%E5%8F%AF%E4%BB%A5%E5%87%8F%E5%B0%91%E6%9F%A5%E8%AF%A2%E6%AC%A1%E6%95%B0-%E6%9C%89%E5%8F%AF%E4%BB%A5%E6%8F%90%E9%AB%98%E6%94%BB%E5%87%BB%E6%88%90%E5%8A%9F%E7%8E%87%E7%9A%84%E9%BB%91%E7%9B%92%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/";
           
         },
-      },{id: "post-a-post-with-tikzjax",
+      },{id: "post-一个模型就可以生成多种针对不同类型的对抗样本-更轻",
         
-          title: "a post with TikZJax",
+          title: "一个模型就可以生成多种针对不同类型的对抗样本，更轻",
         
-        description: "this is what included TikZ code could look like",
+        description: "本文提出了一种基于条件生成对抗网络(cGAN)的对抗样本生成方法GAP++",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2023/tikzjax/";
+            window.location.href = "/blog/2021/%E4%B8%80%E4%B8%AA%E6%A8%A1%E5%9E%8B%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%94%9F%E6%88%90%E5%A4%9A%E7%A7%8D%E9%92%88%E5%AF%B9%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC-%E6%9B%B4%E8%BD%BB/";
           
         },
-      },{id: "post-a-post-with-bibliography",
+      },{id: "post-提出了一种利用图像转换-提高对抗训练对局部鲁棒特征的学习的方法",
         
-          title: "a post with bibliography",
+          title: "提出了一种利用图像转换，提高对抗训练对局部鲁棒特征的学习的方法",
         
-        description: "an example of a blog post with bibliography",
+        description: "提出了一种新的方法，通过图像转换技术来增强对抗训练的效果，旨在提高模型对局部特征的鲁棒性和泛化能力。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2023/post-bibliography/";
+            window.location.href = "/blog/2021/%E6%8F%90%E5%87%BA%E4%BA%86%E4%B8%80%E7%A7%8D%E5%88%A9%E7%94%A8%E5%9B%BE%E5%83%8F%E8%BD%AC%E6%8D%A2-%E6%8F%90%E9%AB%98%E5%AF%B9%E6%8A%97%E8%AE%AD%E7%BB%83%E5%AF%B9%E5%B1%80%E9%83%A8%E9%B2%81%E6%A3%92%E7%89%B9%E5%BE%81%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%96%B9%E6%B3%95/";
           
         },
-      },{id: "post-a-post-with-jupyter-notebook",
+      },{id: "post-在基于图像转换的防御方法基础上引入了softmax分布分类器",
         
-          title: "a post with jupyter notebook",
+          title: "在基于图像转换的防御方法基础上引入了softmax分布分类器",
         
-        description: "an example of a blog post with jupyter notebook",
+        description: "在这篇文章中，我们探讨了一种新的防御方法，通过引入softmax分布分类器来增强基于图像转换的防御机制。该方法旨在提高对抗样本和干净样本的分类准确率，解决了传统随机输入变换方法在提升对抗样本准确率时对干净样本正确率的负面影响。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2023/jupyter-notebook/";
+            window.location.href = "/blog/2021/%E5%9C%A8%E5%9F%BA%E4%BA%8E%E5%9B%BE%E5%83%8F%E8%BD%AC%E6%8D%A2%E7%9A%84%E9%98%B2%E5%BE%A1%E6%96%B9%E6%B3%95%E5%9F%BA%E7%A1%80%E4%B8%8A%E5%BC%95%E5%85%A5%E4%BA%86softmax%E5%88%86%E5%B8%83%E5%88%86%E7%B1%BB%E5%99%A8/";
           
         },
-      },{id: "post-a-post-with-custom-blockquotes",
+      },{id: "post-无需对抗样本训练即可提高模型鲁棒性的方法-jarn",
         
-          title: "a post with custom blockquotes",
+          title: "无需对抗样本训练即可提高模型鲁棒性的方法（JARN）",
         
-        description: "an example of a blog post with custom blockquotes",
+        description: "本文介绍了一种新的方法，旨在提高模型的鲁棒性，而无需依赖对抗样本实例进行对抗训练。这种方法通过优化模型输出的雅可比矩阵，提供了一种新的视角来增强模型的防御能力。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2023/custom-blockquotes/";
+            window.location.href = "/blog/2021/%E4%B8%8D%E9%9C%80%E8%A6%81%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E5%AE%9E%E4%BE%8B%E8%BF%9B%E8%A1%8C%E5%AF%B9%E6%8A%97%E8%AE%AD%E7%BB%83%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%8F%90%E9%AB%98%E6%A8%A1%E5%9E%8B%E9%B2%81%E6%A3%92%E6%80%A7%E7%9A%84%E6%96%B0%E6%96%B9%E6%B3%95-JARN/";
           
         },
-      },{id: "post-a-post-with-table-of-contents-on-a-sidebar",
+      },{id: "post-利用skip-connections模块生成迁移性强的对抗样本",
         
-          title: "a post with table of contents on a sidebar",
+          title: "利用skip connections模块生成迁移性强的对抗样本",
         
-        description: "an example of a blog post with table of contents on a sidebar",
+        description: "利用skip connections模块生成迁移性强的对抗样本的研究，探讨其在对抗攻击中的应用与效果。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2023/sidebar-table-of-contents/";
+            window.location.href = "/blog/2021/%E5%88%A9%E7%94%A8skip-connections%E6%A8%A1%E5%9D%97%E7%94%9F%E6%88%90%E8%BF%81%E7%A7%BB%E6%80%A7%E5%BC%BA%E7%9A%84%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC/";
           
         },
-      },{id: "post-a-post-with-audios",
+      },{id: "post-提出了新的激活函数k-wta-以更好的防御基于梯度的对抗攻击",
         
-          title: "a post with audios",
+          title: "提出了新的激活函数k-WTA，以更好的防御基于梯度的对抗攻击",
         
-        description: "this is what included audios could look like",
+        description: "提出了k-Winners-Take-All (k-WTA) 激活函数，这是一种C0不连续函数，旨在更有效地防御基于梯度的对抗攻击，从而提高模型的鲁棒性和分类准确率。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2023/audios/";
+            window.location.href = "/blog/2021/%E6%8F%90%E5%87%BA%E4%BA%86%E6%96%B0%E7%9A%84%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0k-WTA-%E4%BB%A5%E6%9B%B4%E5%A5%BD%E7%9A%84%E9%98%B2%E5%BE%A1%E5%9F%BA%E4%BA%8E%E6%A2%AF%E5%BA%A6%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/";
           
         },
-      },{id: "post-a-post-with-videos",
+      },{id: "post-首个无需真实数据的黑盒攻击模型",
         
-          title: "a post with videos",
+          title: "首个无需真实数据的黑盒攻击模型",
         
-        description: "this is what included videos could look like",
+        description: "本文介绍了一种创新的黑盒攻击模型，首个无需真实数据即可生成对抗样本的方法，具有较高的攻击成功率和实用性。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2023/videos/";
+            window.location.href = "/blog/2021/%E9%A6%96%E4%B8%AA%E6%97%A0%E9%9C%80%E7%9C%9F%E5%AE%9E%E6%95%B0%E6%8D%AE%E7%9A%84%E9%BB%91%E7%9B%92%E6%94%BB%E5%87%BB%E6%A8%A1%E5%9E%8B/";
           
         },
-      },{id: "post-displaying-beautiful-tables-with-bootstrap-tables",
+      },{id: "post-提出了矩形遮挡攻击-提高模型对可物理实现的攻击的鲁棒性",
         
-          title: "displaying beautiful tables with Bootstrap Tables",
+          title: "提出了矩形遮挡攻击，提高模型对可物理实现的攻击的鲁棒性",
         
-        description: "an example of how to use Bootstrap Tables",
+        description: "提出了矩形遮挡攻击（ROA），通过引入固定尺寸的矩形遮挡物，增强模型对可物理实现攻击的鲁棒性。该方法结合对抗训练和随机平滑技术，旨在有效抵御现实环境中的对抗性攻击。",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2023/tables/";
-          
-        },
-      },{id: "post-a-post-with-table-of-contents",
-        
-          title: "a post with table of contents",
-        
-        description: "an example of a blog post with table of contents",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2023/table-of-contents/";
-          
-        },
-      },{id: "post-a-post-with-giscus-comments",
-        
-          title: "a post with giscus comments",
-        
-        description: "an example of a blog post with giscus comments",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2022/giscus-comments/";
-          
-        },
-      },{id: "post-a-post-with-redirect",
-        
-          title: "a post with redirect",
-        
-        description: "you can also redirect to assets like pdf",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/assets/pdf/example_pdf.pdf";
-          
-        },
-      },{id: "post-a-post-with-diagrams",
-        
-          title: "a post with diagrams",
-        
-        description: "an example of a blog post with diagrams",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2021/diagrams/";
-          
-        },
-      },{id: "post-a-distill-style-blog-post",
-        
-          title: "a distill-style blog post",
-        
-        description: "an example of a distill-style blog post and main elements",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2021/distill/";
-          
-        },
-      },{id: "post-a-post-with-twitter",
-        
-          title: "a post with twitter",
-        
-        description: "an example of a blog post with twitter",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2020/twitter/";
-          
-        },
-      },{id: "post-a-post-with-disqus-comments",
-        
-          title: "a post with disqus comments",
-        
-        description: "an example of a blog post with disqus comments",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2015/disqus-comments/";
-          
-        },
-      },{id: "post-a-post-with-math",
-        
-          title: "a post with math",
-        
-        description: "an example of a blog post with some math",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2015/math/";
-          
-        },
-      },{id: "post-a-post-with-code",
-        
-          title: "a post with code",
-        
-        description: "an example of a blog post with some code",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2015/code/";
-          
-        },
-      },{id: "post-a-post-with-images",
-        
-          title: "a post with images",
-        
-        description: "this is what included images could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2015/images/";
-          
-        },
-      },{id: "post-a-post-with-formatting-and-links",
-        
-          title: "a post with formatting and links",
-        
-        description: "march &amp; april, looking forward to summer",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2015/formatting-and-links/";
+            window.location.href = "/blog/2021/%E6%8F%90%E5%87%BA%E4%BA%86%E7%9F%A9%E5%BD%A2%E9%81%AE%E6%8C%A1%E6%94%BB%E5%87%BB-%E6%8F%90%E9%AB%98%E6%A8%A1%E5%9E%8B%E5%AF%B9%E5%8F%AF%E7%89%A9%E7%90%86%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%94%BB%E5%87%BB%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7/";
           
         },
       },{id: "books-the-godfather",

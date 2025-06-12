@@ -1,0 +1,225 @@
+<!DOCTYPE html> <html lang="cn"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> FSR402压力传感器Unity演示 | 陈伦 Chen Lun </title> <meta name="author" content="陈伦 Chen Lun"> <meta name="description" content="使用FSR402压力传感器采集压力数据并通过Unity进行可视化演示"> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%8C%B5&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://alanchancl.github.io/blog/2023/FSR402%E5%8E%8B%E5%8A%9B%E4%BC%A0%E6%84%9F%E5%99%A8%E5%8E%8B%E5%8A%9B-Unity%E6%BC%94%E7%A4%BA.md/"> <script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">陈伦</span> Chen Lun </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item "> <a class="nav-link" href="/teaching/">teaching </a> </li> <li class="nav-item "> <a class="nav-link" href="/people/">people </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">submenus </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/books/">bookshelf</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/blog/">blog</a> </div> </li> <li class="nav-item"> <button id="search-toggle" title="Search" onclick="openSearchModal()"> <span class="nav-link">ctrl k <i class="ti ti-search"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="ti ti-sun-moon" id="light-toggle-system"></i> <i class="ti ti-moon-filled" id="light-toggle-dark"></i> <i class="ti ti-sun-filled" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">FSR402压力传感器Unity演示</h1> <p class="post-meta"> Created on February 05, 2023 </p> <p class="post-tags"> <a href="/blog/2023"> <i class="fa-solid fa-calendar fa-sm"></i> 2023 </a>   ·   <a href="/blog/tag/%E5%B5%8C%E5%85%A5%E5%BC%8F"> <i class="fa-solid fa-hashtag fa-sm"></i> 嵌入式</a>   ·   <a href="/blog/category/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0"> <i class="fa-solid fa-tag fa-sm"></i> 技术笔记</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <h2 id="1-方案简介">1. 方案简介</h2> <p>通过FSR402压力传感器检测压力数据，利用Arduino读取IO口的电压信息，将压力数据通过串口传输给电脑，python读取串口数据后将压力数据传递给Unity，并制作出两只手指挤压小球的动画展示压力大小。</p> <h2 id="2fsr402压力传感器电路">2.FSR402压力传感器电路</h2> <div class="row mt-3"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302131952316-480.webp 480w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302131952316-800.webp 800w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302131952316-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302131952316.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="FSR402接线图" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption">FSR402接线图</div> <h2 id="3-ardunio接收并串口发送数据">3. Ardunio接收并串口发送数据</h2> <pre><code class="language-#C">#include &lt;Arduino.h&gt;
+
+int fsrPin0 = A0;     // A0 接口
+int fsrPin1 = A1;     // A0 接口
+int fsrReading0;
+int fsrReading1;
+
+void setup(void) 
+{
+  Serial.begin(9600);
+}
+
+void loop(void) 
+{
+  fsrReading0 = analogRead(fsrPin0);
+  fsrReading1 = analogRead(fsrPin1);
+  Serial.print(fsrReading0);
+  Serial.print(",");
+  Serial.print(fsrReading1);
+  Serial.print("\n");
+  delay(100);
+}
+</code></pre> <h2 id="4-python接收数据并通过socket发送给unity">4. Python接收数据并通过Socket发送给Unity</h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import serial
+import socket
+
+ser = serial.Serial('COM3', 9600, timeout=0.2)
+
+#socket
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+serverAddressPort = ("127.0.0.1", 5054)#这里的IP地址无关紧要，因为Unity中会搜寻全部地址，关键是端口号一致就行
+
+# 接收返回的信息
+while True:
+
+    while ser.inWaiting()&gt;0: 
+        data = []
+        revdata = ser.readline()
+        revdata = str(revdata)[2:len(str(revdata))-3]
+        A0,A1 = revdata.split(',')
+        data.extend([int(A0), int(A1)])
+        print(data)
+        sock.sendto(str.encode(str(data)), serverAddressPort)
+</code></pre></div></div> <h2 id="5-unity配置">5. Unity配置</h2> <p>这里包括Unity中socket数据的接收、小球和摄像头的布置、还有挤压小球时小球Mesh变化的代码</p> <h3 id="51-socket接收第四步中python传来的数据">5.1 socket接收第四步中Python传来的数据</h3> <ul> <li>Unity中新建Project</li> <li>在场景（Scene）或者GameObject中新建空对象（Create Empty），这里我把他命名为Manger，用来存放UDP接受Python数据的Script代码。</li> </ul> <div class="row mt-3"> <div class="col-sm mt-3 mt-md-0" style="text-align: center;"> <figure> <picture> <source class="responsive-img-srcset" srcset="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132006302-480.webp 480w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132006302-800.webp 800w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132006302-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132006302.png" class="img-fluid rounded z-depth-1" width="50%" height="auto" title="Unity中新建Manager对象" data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption">Unity中新建Manager对象</div> <ul> <li>将<strong>UDPReceive.cs</strong>文件拖入到Project中的Assets文件夹中</li> </ul> <pre><code class="language-#CSS">##UDPReceive.cs##
+
+using UnityEngine;
+using System;
+using System.Text;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
+
+public class UDPReceive : MonoBehaviour
+{
+
+    Thread receiveThread;
+    UdpClient client; 
+    public int port = 5052;
+    public bool startRecieving = true;
+    public bool printToConsole = false;
+    public string data;
+
+
+    public void Start()
+    {
+
+        receiveThread = new Thread(
+            new ThreadStart(ReceiveData));
+        receiveThread.IsBackground = true;
+        receiveThread.Start();
+    }
+
+    // receive thread
+    private void ReceiveData()
+    {
+
+        client = new UdpClient(port);
+        while (startRecieving)
+        {
+
+            try
+            {
+                IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
+                byte[] dataByte = client.Receive(ref anyIP);
+                data = Encoding.UTF8.GetString(dataByte);
+
+                if (printToConsole) { print(data); }
+            }
+            catch (Exception err)
+            {
+                print(err.ToString());
+            }
+        }
+    }
+
+}
+</code></pre> <div class="row mt-3"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132017452-480.webp 480w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132017452-800.webp 800w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132017452-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132017452.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="Unity配置界面1" data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132017451-480.webp 480w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132017451-800.webp 800w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132017451-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132017451.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="Unity配置界面2" data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption">Unity配置界面</div> <h3 id="52-新建小球和左右摄像头">5.2 新建小球和左右摄像头</h3> <p>在Unity场景中新建小球：GameObject -&gt; 3DObject -&gt; Sphere *在Unity场景中左右摄像头：GameObject -&gt; Camera 并将左右Camera移动至小球的左右侧，小球处于摄像头中心位置。这里是为了让摄像头发出射线，从而模拟两只手指抓握时发力的场景。</p> <div class="row mt-3"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132018867-480.webp 480w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132018867-800.webp 800w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132018867-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132018867.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="Unity场景设置" data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption">Unity场景设置</div> <h3 id="53-挤压小球时mesh变化的代码">5.3 挤压小球时Mesh变化的代码</h3> <p><a href="https://blog.csdn.net/qq_39574690/article/details/124658090?spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-5-124658090-blog-102668009.pc_relevant_multi_platform_whitelistv1&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-5-124658090-blog-102668009.pc_relevant_multi_platform_whitelistv1&amp;utm_relevant_index=9" rel="external nofollow noopener" target="_blank">参考网址</a>实现效果如下：</p> <div class="row mt-3"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132020857-480.webp 480w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132020857-800.webp 800w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132020857-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132020857.gif" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="小球变形效果" data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption">小球变形效果</div> <h3 id="54-参照53中的代码加入压力数据">5.4 参照5.3中的代码加入压力数据</h3> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MeshChangeDemo : MonoBehaviour
+{
+    public UDPReceive udpReceive;
+    public MeshFilter meshFilter;
+    public Camera LeftCamera,RightCamera;
+    public float changeForce = 10f;//10f
+    public float springForce = 20f;//20f
+    public float forceOffset = 0.1f;
+    public float damping = 5f;
+    public float uniformScale = 1f;
+    public float uniformScaleRate = 0f;
+    
+    private Mesh mesh;
+    private Vector3[] originVertices;
+    private Vector3[] displayVertices;
+    private Vector3[] vertexVelocities;
+    // Start is called before the first frame update
+    void Start()
+    {
+        uniformScale = transform.localScale.x;
+        mesh = meshFilter.mesh;
+        originVertices = (Vector3[])mesh.vertices.Clone();
+        displayVertices = (Vector3[])mesh.vertices.Clone();
+        vertexVelocities = new Vector3[displayVertices.Length];
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        RaycastHit hit;
+                string data = udpReceive.data;
+        
+        data = data.Remove(0, 1);
+        data = data.Remove(data.Length - 1, 1);
+        
+        string[] points = data.Split(',');
+        
+        float A0 = (float.Parse(points[0])+0.1f)/850;
+        float A1 = (float.Parse(points[1])+0.1f)/850;
+        //print(A0);
+        //print(A1);
+
+        //if (A0 &gt; 0.01)
+        //{
+            if (Physics.Raycast(RightCamera.ScreenPointToRay(new Vector3(180, 180, 0)), out hit))
+            {
+                MeshChangeDemo meshChangeDemo = hit.transform.GetComponent&lt;MeshChangeDemo&gt;();
+                if (meshChangeDemo != null)
+                {
+                    meshChangeDemo.ChangeMesh(hit.point + hit.normal * forceOffset, changeForce* A0);
+                }
+            }
+
+
+            for (int i = 0; i &lt; displayVertices.Length; i++)
+            {
+                Vector3 v = vertexVelocities[i];
+                Vector3 displacement = displayVertices[i] - originVertices[i];
+                v -= displacement * springForce * Time.deltaTime; //回弹形状
+                v *= 1f - damping * Time.deltaTime;               //阻尼
+                vertexVelocities[i] = v;
+                //displayVertices[i] += v * (Time.deltaTime / uniformScale); //应用速度 除以uniformScale是为了兼容缩放了物体的情况 可理解为放大物体则形变更小，反之更大
+                float uniform = (uniformScale * uniformScaleRate);
+                if (uniform == 0)
+                {
+                    uniform = 1;
+                }
+                displayVertices[i] += v * (Time.deltaTime / uniform);
+            }
+            mesh.vertices = displayVertices;
+            mesh.RecalculateNormals();
+        //}
+
+        //if (A1 &gt; 0.01)
+        //{
+            RaycastHit hit1;
+
+            if (Physics.Raycast(LeftCamera.ScreenPointToRay(new Vector3(200, 165, 0)), out hit1))
+            {
+                MeshChangeDemo meshChangeDemo = hit1.transform.GetComponent&lt;MeshChangeDemo&gt;();
+                if (meshChangeDemo != null)
+                {
+                    meshChangeDemo.ChangeMesh(hit1.point + hit1.normal * forceOffset, changeForce* A1);
+                }
+            }
+
+            for (int i = 0; i &lt; displayVertices.Length; i++)
+            {
+                Vector3 v = vertexVelocities[i];
+                Vector3 displacement = displayVertices[i] - originVertices[i];
+                v -= displacement * springForce * Time.deltaTime; //回弹形状
+                v *= 1f - damping * Time.deltaTime;               //阻尼
+                vertexVelocities[i] = v;
+                //displayVertices[i] += v * (Time.deltaTime / uniformScale); //应用速度 除以uniformScale是为了兼容缩放了物体的情况 可理解为放大物体则形变更小，反之更大
+                float uniform = (uniformScale * uniformScaleRate);
+                if (uniform == 0)
+                {
+                    uniform = 1;
+                }
+                displayVertices[i] += v * (Time.deltaTime / uniform);
+            }
+            mesh.vertices = displayVertices;
+            mesh.RecalculateNormals();
+        //}
+    }
+
+    public void ChangeMesh(Vector3 point, float force)
+    {
+        point = transform.InverseTransformPoint(point);
+        for (int i = 0; i &lt; displayVertices.Length; i++)
+        {
+            Vector3 pointToVertex = displayVertices[i] - point;
+            //注意：物体缩放了，但是这里获取到的物体网格顶点实际是没有缩放时的顶点位置，也就是会是得到的一个错误的向量 如果你的物体被缩放了。
+            pointToVertex *= uniformScale;//处理物体被缩放，但是模型本身顶点没缩放 导致向量与实际不符，现在乘上一个缩放系数它自身 如果是2倍则是会将向量还原到正确的倍数            
+            float f = force / (1f + pointToVertex.sqrMagnitude); //Fv = F / (1 + d^2) 获取顶点受力公式
+            float v = f * Time.deltaTime;                        //dv = a * dt  a = F/m 设m=1，则 dv = F * dt
+            vertexVelocities[i] += pointToVertex.normalized * v;
+        }
+    }
+
+}
+</code></pre></div></div> <h2 id="6-效果展示">6. 效果展示</h2> <div class="row mt-3"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132030807-480.webp 480w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132030807-800.webp 800w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132030807-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132030807.jpg" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="FSR402+Arduino采集数据" data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption">FSR402+Arduino采集数据</div> <div class="row mt-3"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132029445-480.webp 480w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132029445-800.webp 800w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132029445-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132029445.gif" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="Python串口读取数据" data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132029255-480.webp 480w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132029255-800.webp 800w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132029255-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132029255.gif" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="Unity接收数据" data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption">左：Python串口读取数据 | 右：Unity接收数据</div> <div class="row mt-3"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132030791-480.webp 480w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132030791-800.webp 800w,https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132030791-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="https://raw.githubusercontent.com/alanchancl/BlogImg/main/img202302132030791.gif" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="Unity挤压小球动画展示" data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption">Unity挤压小球动画展示</div> </div> </article> <br> <hr> <br> <ul class="list-disc pl-8"></ul> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E4%B8%AD%E7%89%A9%E7%90%86%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7%E7%A0%94%E7%A9%B6/">自动驾驶关于对抗攻击的鲁棒性研究</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/%E9%9B%95%E5%88%BB%E5%AD%97%E8%87%AA%E5%8A%A8%E6%8E%92%E6%A0%B7%E7%AE%97%E6%B3%95/">雕刻字自动排样算法</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/%E8%A7%A6%E8%A7%89%E6%89%8B%E5%A5%97%E7%89%A9%E4%BD%93%E8%AF%86%E5%88%AB/">能识别物体的触觉手套</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/PyTorch-Geometric(PyG)-%E5%BA%93%E7%9A%84%E5%AE%89%E8%A3%85/">PyTorch Geometric(PyG) 库的安装</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2022/Obsidian-Templater%E6%8F%92%E4%BB%B6+QuickAdd%E6%8F%92%E4%BB%B6%E8%87%AA%E5%8A%A8%E6%A8%A1%E6%9D%BF/">Obsidian | Templater插件+QuickAdd插件自动模板</a> </li> </div> </div> <footer class="sticky-bottom mt-5" role="contentinfo"> <div class="container"> © Copyright 2025 陈伦 Chen Lun. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script> <script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script> <script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script> <script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script> <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script> <script src="/assets/js/search-data.js"></script> <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script> </body> </html>
